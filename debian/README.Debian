@@ -1,0 +1,66 @@
+snacc for Debian
+----------------
+
+Help appreciated:
+
+1. Snacc is an old-style-ASN.1 compiler, a lot of people even say it's
+   totally obsolete.  I don't think it's reasonable to hack on it to
+   make it compliant with the latest ASN.1 standards.  ASN.1 has
+   changed a lot, has a lot of new features (object information
+   classes, constraints, parameterisation) and additional encoding
+   rules (PER - Packed Encoding Rules, XER - XML Encoding Rules.  The
+   upcoming ECN (encoding control notation) will even give the user
+   complete control over the encoding.  Therefore, a completely new,
+   all-purpose, free ASN.1 compiler is needed.  If you have written
+   one, please drop me a letter - I would be happy to package it for
+   Debian GNU/Linux.
+
+   Note (2008): asn1c is packaged for Debian.
+
+2. The snacc development has split up since 1997:
+
+   2.1 The root-of-all-snacc is by M. Sample and G. Neufeld, later
+       maintained by R. Joop and later by S. Wangnick.  The last
+       version has been called 1.3b4, AFAIK.  The last ChangeLog entry
+       is from 1997-09-16.  I tried to contact the original authors,
+       but never got any sign of life.
+
+   2.2 BBN Technologies changed the build process of this version to
+       use GNU automake and libtool and fixed some things.  The Debian
+       package uses this version, because it builds easily.  The
+       Debian package adds the examples from older snacc versions.
+       Good work, but please update the ChangeLog next time :-) They
+       called their version 1.3 - I renamed it to 1.3bbn, to avoid
+       confusion with the old 1.3 version.  The last ChangeLog entry
+       is from 1997-10-10.  Some people seem to use and enhance this
+       version heavily, e.g.  see bug report #202593 by Kai Henningsen
+       <kai@lisbeth2.intern.cats.ms>.
+
+   2.3 DigitalNet (formerly Getronics Government Solutions (formerly
+       J.G. Van Dyke & Associates, Inc)) changed snacc in parallel:
+       They added support for DER (Distinguished Encoding Rules) and
+       some string types.  Their branch is called eSNACC.
+       Unfortunately - last I checked - they don't use GNU automake
+       and libtool, but some proprietary build techniques (*.dsw and
+       *.dsp files), so this version does not build as cleanly as BBNs
+       under UNIX.  Also, they renamed files, ingnoring the GNU coding
+       standard, e.g. they renamed `ChangeLog', `NEWS', `README' and
+       everything else to all lower-case.  They even renamed all .C
+       files into .cpp.  The latest version is 1.5.1 from 2003-05.
+       But they do not update the ChangeLog, so the last entry is from
+       1997-09-16.  Download it from
+       http://www.digitalnet.com/knowledge/snacc_lib.htm, source:
+       http://www.digitalnet.com/knowledge/snacc_lib/esnacc-1.5.1.tgz.
+
+   2.4 There is also a "Snacc for Java" (by IBM, I think).  I don't
+       know anything about it.
+
+   It would be worthwhile to re-integrate the approaches 2.2 and 2.3.
+   OTOH, it would be a lot of work, better spend with 1., see above.
+
+3. The Debian build of snacc leaves out the ASN.1 tree viewer/editor.
+   If anybody needs it and is able to compile the latest version of
+   the Tcl/Tk tree widget with latest version of Tcl/Tk, please
+   package it.  Or better, write a new one, based on 1. and PyGTK.
+
+ -- W. Martin Borgert <debacle@debian.org>, 2003-08-10T08:15+0000

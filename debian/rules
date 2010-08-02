@@ -1,0 +1,32 @@
+#!/usr/bin/make -f
+
+DEB_DH_ALWAYS_EXCLUDE=.svn
+DEB_INSTALL_DOCS_snacc-doc=doc/snacc-a5.ps
+DEB_INSTALL_EXAMPLES_libsnacc-dev=c++-examples c-examples tbl-example
+DEB_INSTALL_MANPAGES_snacc=debian/berdecode.1 debian/snacc-config.1
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/rules/simple-patchsys.mk
+include /usr/share/cdbs/1/class/autotools.mk
+
+DB2MAN=http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl
+
+post-patches::
+	mkdir -p c-lib/Cebuf c-lib/ebuf c-lib/mbuf c-lib/sbuf c-lib/tbl \
+		 c++-lib/c++
+	AUTOMAKE=automake-1.7 ACLOCAL=aclocal-1.7 autoreconf -fi
+
+build/snacc::
+	cd debian; xsltproc --nonet --novalid $(DB2MAN) berdecode.dbk
+	cd debian; xsltproc --nonet --novalid $(DB2MAN) snacc-config.dbk
+
+install/snacc::
+	rm -rf $(CURDIR)/debian/snacc/usr/share/doc/snacc-doc/
+
+binary-post-install/snacc::
+	rm -f $(CURDIR)/debian/snacc/usr/share/man/man1/snacced.1*
+
+clean::
+	rm -rf c-lib/Cebuf c-lib/ebuf c-lib/mbuf c-lib/sbuf c-lib/tbl \
+	       c++-lib/c++ c++-lib/tcl/*.C c++-lib/tcl/tkAppInit.c    \
+	       config.log config.status depcomp

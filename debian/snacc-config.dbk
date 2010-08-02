@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+  <!ENTITY dhfirstname "<firstname>W. Martin</firstname>">
+  <!ENTITY dhsurname   "<surname>Borgert</surname>">
+  <!-- Please adjust the date whenever revising the manpage. -->
+  <!ENTITY dhdate      "<date>2001-02-17</date>">
+  <!ENTITY dhsection   "<manvolnum>1</manvolnum>">
+  <!ENTITY dhemail     "<email>debacle@debian.org</email>">
+  <!ENTITY dhusername  "W. Martin Borgert">
+  <!ENTITY dhucpackage "<refentrytitle>snacc-config</refentrytitle>">
+  <!ENTITY dhpackage   "snacc-config">
+  <!ENTITY debian      "<productname>Debian GNU/Linux</productname>">
+  <!ENTITY gnu         "<acronym>GNU</acronym>">
+]>
+
+<!-- $Id: snacc-config.dbk,v 1.1 2003/08/10 08:46:25 debacle Exp $ -->
+
+<refentry>
+  <refentryinfo>
+    <address>
+      &dhemail;
+    </address>
+    <author>
+      &dhfirstname;
+      &dhsurname;
+    </author>
+    <copyright>
+      <year>2001</year>
+      <holder>&dhusername;</holder>
+    </copyright>
+    &dhdate;
+  </refentryinfo>
+  <refmeta>
+    &dhucpackage;
+
+    &dhsection;
+  </refmeta>
+  <refnamediv>
+    <refname>&dhpackage;</refname>
+
+    <refpurpose>script to get information about the installed version
+       of <command>snacc</command></refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+    <cmdsynopsis>
+      <command>&dhpackage;</command>
+
+      <arg><option>--version</option></arg>
+
+      <arg><option>--prefix=<replaceable>DIR</replaceable></option></arg>
+
+      <arg><option>--exec-prefix=<replaceable>DIR</replaceable></option></arg>
+
+      <arg><option>--uninstalled=<replaceable>DIR</replaceable></option></arg>
+
+      <arg><option>--libtool</option></arg>
+
+      <arg><option>--cflags</option></arg>
+
+      <arg><option>--libs</option></arg>
+
+      <arg><option>--compiler</option></arg>
+
+      <arg><option>--asn1specs</option></arg>
+
+      <arg><option>--language=<replaceable>LANG (C or C++)</replaceable></option></arg>
+
+      <arg>BUFFERTYPE (one of ebuf, mbuf, sbuf, or tbl)</arg>
+
+    </cmdsynopsis>
+  </refsynopsisdiv>
+  <refsect1>
+    <title>Description</title>
+
+      <para><command>snacc-config</command> is a tool that is used to
+        configure to determine the compiler and linker flags that
+        should be used to compile and link programs that use
+        <command>snacc</command>.</para>
+
+  </refsect1>
+  <refsect1>
+    <title>Options</title>
+    <variablelist>
+      <varlistentry>
+	<term><option>--version</option></term>
+	<listitem>
+	  <para>Print the currently installed version of
+	    <command>snacc</command>.</para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><option>--prefix=<replaceable>PREFIX</replaceable></option></term>
+	<listitem>
+	  <para>If specified, use <replaceable>PREFIX</replaceable>
+	    instead of the installation prefix that
+	    <command>snacc</command> was built with when computing the
+	    output for the <option>--cflags</option> and
+	    <option>--libs</option> options.  This option is normally
+	    not needed in &debian;.</para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><option>--exec-prefix=<replaceable>PREFIX</replaceable></option></term>
+	<listitem>
+	  <para>If specified, use <replaceable>PREFIX</replaceable>
+	    instead of the installation exec prefix that
+	    <command>snacc</command> was built with when computing the
+	    output for the <option>--cflags</option> and
+	    <option>--libs</option> options.  This option is normally
+	    not needed in &debian;.</para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><option>--libtool</option></term>
+	<listitem>
+	  <para>If you understand this option, please file a bug
+	    against snacc.</para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><option>--cflags</option></term>
+	<listitem>
+	  <para>Print the compiler flags that are necessary to compile
+	    a <command>snacc</command> based program.</para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><option>--libs</option></term>
+	<listitem>
+	  <para>Print the linker flags that are necessary to link a
+	    <command>snacc</command> based program.</para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><option>--compiler</option></term>
+	<listitem>
+	  <para>Prints the filename of <command>snacc</command>.  On
+	    &debian;, it's <filename>/usr/bin/snacc</filename>.</para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><option>--asn1specs</option></term>
+	<listitem>
+	  <para>Print the location of the
+	    <command>snacc</command>-specific ASN.1 files.  On
+	    &debian;, it's
+	    <filename>/usr/include/snacc/asn1/</filename>.</para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><option>--language=<replaceable>LANG (C or C++)</replaceable></option></term>
+	<listitem>
+
+	  <para>This option determines, wether
+	    <option>--cflags</option> and <option>--libs</option>
+	    print the flags for C or C++.  On &debian; this is
+	    e.g. <filename>/usr/include/snacc/c/</filename> or
+	    <filename>/usr/include/snacc/c++/</filename>.</para>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><option>BUFFERTYPE</option></term>
+	<listitem>
+	  <para>This option determines the output of
+	    <option>--cflags</option> and <option>--libs</option>.
+	    <option>BUFFERTYPE</option> must be one of
+	    <replaceable>ebuf</replaceable>,
+	    <replaceable>mbuf</replaceable>,
+	    <replaceable>sbuf</replaceable>, or
+	    <replaceable>tbl</replaceable>.</para>
+	</listitem>
+      </varlistentry>
+    </variablelist>
+  </refsect1>
+  <refsect1>
+    <title>See Also</title>
+
+    <para>snacc (1), mkchdr(1), ptbl(1), pval(1), berdecode(1).</para>
+
+    <para>Please install the snacc-doc package for more
+      information on snacc.</para>
+
+  </refsect1>
+  <refsect1>
+    <title>Author</title>
+
+    <para>This manual page was written by &dhusername; (&dhemail;) for
+      the &debian; system.  Parts of it are taken from the
+      glib-config(1) manual page - I hope that nothing is inaccurate
+      for <command>snacc-config</command>.  Permission is granted to
+      copy, distribute and/or modify this document under the terms of
+      the <acronym>GNU</acronym> General Public License, Version 3
+      or any later version published by the Free Software Foundation.</para>
+
+  </refsect1>
+</refentry>

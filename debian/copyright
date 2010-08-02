@@ -1,0 +1,35 @@
+Packaged-By: W. Martin Borgert <debacle@debian.org>
+Packaged-Date: Sat, 2001-01-27 01:18:46 +0000.
+
+Upstream-Source: http://www.ir.bbn.com/download/tools/snacc-1.3.tar.gz
+ ftp://ftp.fokus.gmd.de/pub/freeware/snacc/snacc-1.3b4.tar.gz
+ (c-examples, c++-examples, tbl-example)
+
+Upstream-Author: M. Fredette <fredette@bbn.com>
+ Mike Sample <msample@cs.ubc.ca>
+ Gerald Neufeld <neufeld@cs.ubc.ca>
+ Robert Joop  <rj@rainbow.in-berlin.de>
+ Sebastian Wangnick  <sebastian.wangnick@eurocontrol.be>
+
+Files: debian/*.dbk
+Copyright: © 2000, 2001, W. Martin Borgert <debacle@debian.org>
+License: GPL-3+
+ This package is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 3 of the License, or
+ (at your option) any later version.
+
+Disclaimer: The snacc tool itself is covered by the GNU GPL, while the
+ generated code and the libraries used by generated code are free to
+ use for any purpose, even non-free software.
+
+Files: *
+Copyright: © 1995, 1996, 1997, 1998 Free Software Foundation, Inc.
+License: GPL-2
+ This package is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; version 2.
+
+The complete text of the forementioned licenses can be found in
+files "/usr/share/common-licenses/GPL-2" and
+"/usr/share/common-licenses/GPL-3", respectively.

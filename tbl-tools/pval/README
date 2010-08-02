@@ -1,0 +1,31 @@
+(RCS control information is at the end of this file.)
+
+
+Value printing README - MS 93
+-----------------------------
+
+pval is a program that prints BER values in their value notation.  Its
+arguments are a type table file, a module and type name and a list of
+BER files of that type.
+
+Look at the code in pval.c - quite simple & very generic.  This is the
+advantage of type tables.
+
+Type "make" to build pval.
+Type ./pval to see the arguments it expects.
+
+try:
+
+./pval -T ../demo-tbls/p-rec.tt -n PersonnelRecord ../demo-tbls/p-rec.ber
+
+cool, eh?
+
+#-------------------------------------------------------------------------------
+# $Header: /usr/app/odstb/CVS/snacc/tbl-tools/pval/README,v 1.2 1997/02/15 19:21:15 rj Exp $
+# $Log: README,v $
+# Revision 1.2  1997/02/15 19:21:15  rj
+# make without args just builds, doesn't install
+#
+# Revision 1.1  1997/02/15 19:15:07  rj
+# first check-in
+#

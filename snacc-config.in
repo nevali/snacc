@@ -1,0 +1,143 @@
+#!/bin/sh
+
+# the idea for this file comes from glib, gtk, and other modules from
+# the GNOME project.
+
+for option; do
+  if test x$args = x; then args=ok; fi
+  if test $args = bad; then break; fi
+  
+  case "$option" in
+  --*=*) argument=`echo $option | sed 's/^.*=//'` ;;
+  *) ;;
+  esac
+
+  case "$option" in
+  --version) show_version=yes ;;
+  --prefix=*) prefix=${argument} ;;
+  --exec-prefix=*) exec_prefix=${argument} ;;
+  --exec-prefix) show_exec_prefix=yes ;;
+  --uninstalled=*) uninstalled=${argument} ;;
+  --libtool) libtool=yes ;;
+  --cflags) show_cflags=yes ;;
+  --libs) show_libs=yes ;;
+  --language=*) language=${argument} ;;
+  --compiler) show_compiler=yes ;;
+  --asn1specs) show_asn1specs=yes ;;
+  ebuf) buffertype=${option} ;;
+  mbuf) buffertype=${option} ;;
+  sbuf) buffertype=${option} ;;
+  tbl) buffertype=${option} ;;
+  *) args=bad ;;
+  esac
+done
+
+if test x$args != xok; then 
+  cat <<EOF  
+usage: @PACKAGE@-config [OPTIONS] BUFFERTYPE
+where OPTIONS are:
+  --version
+  --prefix=DIR
+  --exec-prefix[=DIR]
+  --uninstalled=DIR
+  --libtool
+  --cflags
+  --libs
+  --compiler
+  --asn1
+  --language=LANG  (C or C++)
+where BUFFERTYPE is one of:
+  ebuf
+  mbuf
+  sbuf
+  tbl
+EOF
+  exit 1
+fi
+
+if test x$prefix = x; then prefix=@prefix@; fi
+if test x$exec_prefix = x; then 
+  if test @exec_prefix@ = @prefix@; then
+    exec_prefix=$prefix
+  else
+    exec_prefix=@exec_prefix@
+  fi
+fi
+if test x$language = x; then language=C; fi
+
+if test x$show_cflags = xyes; then
+  if test x$uninstalled = x; then 
+    case "$language" in
+    C)   echo -n "-I@includedir@/@PACKAGE@/c " ;;
+    C++) echo -n "-I@includedir@/@PACKAGE@/c++ " ;;
+    *) ;;
+    esac
+  else
+    echo -n "-I$uninstalled "
+    case "$language" in
+    C)   echo -n "-I$uninstalled/c-lib/inc -I$uninstalled/c-lib/$buffertype " ;;
+    C++) echo -n "-I$uninstalled/c++-lib/inc -I$uninstalled/c++-lib/c++ " ;;
+    *) ;;
+    esac
+  fi
+  case "x$buffertype" in
+  xebuf) echo -n "-DUSE_EXP_BUF " ;;
+  xmbuf) echo -n "-DUSE_MIN_BUF " ;;
+  xsbuf) echo -n "-DUSE_SBUF " ;;
+  xtbl) echo -n "-DUSE_GEN_BUF -DTTBL " ;;
+  *) ;;
+  esac
+  echo ""
+fi
+
+if test x$show_libs = xyes; then
+  if test x$uninstalled = x; then 
+    if test $exec_prefix != /usr; then echo -n "-L${exec_prefix}/lib "; fi
+    case "$language" in
+    C)   echo -n "-lasn1c${buffertype} " ;;
+    C++) echo -n "-Iasn1c++ " ;;
+    *) ;;
+    esac
+  else
+    if test x$libtool = xyes; then
+      case "$language" in
+      C)   echo -n "$uninstalled/c-lib/$buffertype/libasn1c${buffertype}.la " ;;
+      C++) echo -n "$uninstalled/c++-lib/c++/libasn1c++.la " ;;
+      *) ;;
+      esac
+    else
+      case "$language" in
+      C)   echo -n "-L$uninstalled/c-lib/$buffertype/.libs -lasn1c${buffertype} " ;;
+      C++) echo -n "-L$uninstalled/c++-lib/c++/.libs -lasn1c++ " ;;
+      *) ;;
+      esac
+    fi
+  fi
+  echo ""
+fi
+
+if test x$show_exec_prefix = xyes; then
+  echo ${exec_prefix}
+fi
+
+if test x$show_version = xyes; then
+  echo @VERSION@
+fi
+
+if test x$show_compiler = xyes; then
+  if test x$uninstalled = x; then 
+    echo ${exec_prefix}/bin/snacc
+  else
+    echo $uninstalled/compiler/core/snacc
+  fi
+fi
+
+if test x$show_asn1specs = xyes; then
+  if test x$uninstalled = x; then 
+    echo @includedir@/@PACKAGE@/asn1
+  else
+    echo $uninstalled/asn1specs
+  fi
+fi
+
+exit 0

@@ -1,0 +1,632 @@
+# Makefile.in generated automatically by automake 1.4 from Makefile.am
+
+# Copyright (C) 1994, 1995-8, 1999 Free Software Foundation, Inc.
+# This Makefile.in is free software; the Free Software Foundation
+# gives unlimited permission to copy and/or distribute it,
+# with or without modifications, as long as this notice is preserved.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY, to the extent permitted by law; without
+# even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+
+SHELL = @SHELL@
+
+srcdir = @srcdir@
+top_srcdir = @top_srcdir@
+VPATH = @srcdir@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+
+bindir = @bindir@
+sbindir = @sbindir@
+libexecdir = @libexecdir@
+datadir = @datadir@
+sysconfdir = @sysconfdir@
+sharedstatedir = @sharedstatedir@
+localstatedir = @localstatedir@
+libdir = @libdir@
+infodir = @infodir@
+mandir = @mandir@
+includedir = @includedir@
+oldincludedir = /usr/include
+
+DESTDIR =
+
+pkgdatadir = $(datadir)/@PACKAGE@
+pkglibdir = $(libdir)/@PACKAGE@
+pkgincludedir = $(includedir)/@PACKAGE@
+
+top_builddir = ../..
+
+ACLOCAL = @ACLOCAL@
+AUTOCONF = @AUTOCONF@
+AUTOMAKE = @AUTOMAKE@
+AUTOHEADER = @AUTOHEADER@
+
+INSTALL = @INSTALL@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@ $(AM_INSTALL_PROGRAM_FLAGS)
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+transform = @program_transform_name@
+
+NORMAL_INSTALL = :
+PRE_INSTALL = :
+POST_INSTALL = :
+NORMAL_UNINSTALL = :
+PRE_UNINSTALL = :
+POST_UNINSTALL = :
+host_alias = @host_alias@
+host_triplet = @host@
+AS = @AS@
+CC = @CC@
+CXX = @CXX@
+DLLTOOL = @DLLTOOL@
+LD = @LD@
+LEX = @LEX@
+LIBTOOL = @LIBTOOL@
+LN_S = @LN_S@
+LTLIBOBJS = @LTLIBOBJS@
+MAKEINFO = @MAKEINFO@
+NM = @NM@
+OBJDUMP = @OBJDUMP@
+PACKAGE = @PACKAGE@
+RANLIB = @RANLIB@
+VERSION = @VERSION@
+YACC = @YACC@
+
+AUTOMAKE_OPTIONS = 1.3 foreign
+
+noinst_PROGRAMS = snaccC
+bin_PROGRAMS = snacc
+SNACC_UNBUILT = parse-asn1.y lex-asn1.l 	asn1module.h define.h dependency.h do-macros.h err-chk.h 	exports.h gen-tbls.h lex-stuff.h lib-types.h link-types.h 	link-values.h mem.h meta.h normalize.h oid.h parser.h 	print.h recursive.h snacc-util.h val-parser.h 	define.c dependency.c do-macros.c err-chk.c exports.c 	gen-tbls.c lib-types.c link-types.c link-values.c mem.c 	meta.c normalize.c oid.c print.c recursive.c snacc.c 	snacc-util.c val-parser.c 
+
+SNACC_BUILT = tbl.h tbl.c
+snacc_SOURCES = $(SNACC_UNBUILT) $(SNACC_BUILT)
+snaccC_SOURCES = $(SNACC_UNBUILT) tbl-boot.h tbl-boot.c
+YFLAGS = -d
+BACKEND_DIR = $(top_srcdir)/compiler/back-ends
+ASN1_SRC_DIR = $(top_srcdir)/asn1specs
+ASN1_LIB_DIR = $(top_srcdir)/c-lib
+ASN1_INC_DIR = $(ASN1_LIB_DIR)/inc
+ASN1_BOOT_DIR = $(ASN1_LIB_DIR)/boot
+USEFUL_TYPES = $(ASN1_SRC_DIR)/asn-useful.asn1
+snacc_DEPENDENCIES = ../back-ends/LIBOBJ $(ASN1_LIB_DIR)/Cebuf/libasn1cCebuf.la 
+snacc_LDADD = `cat ../back-ends/LIBOBJ` $(ASN1_LIB_DIR)/Cebuf/libasn1cCebuf.la @LEXLIB@
+snaccC_DEPENDENCIES = $(snacc_DEPENDENCIES)
+snaccC_LDADD = $(snacc_LDADD)
+INCLUDES = -DCOMPILER -DUSE_NIBBLE_MEMORY=0 -DUSE_EXP_BUF 	-I$(ASN1_INC_DIR) -I$(ASN1_BOOT_DIR) -I$(BACKEND_DIR)
+
+CLEANFILES = $(SNACC_BUILT)
+EXTRA_DIST = parse-asn1.h
+mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
+CONFIG_HEADER = ../../config.h
+CONFIG_CLEAN_FILES = 
+PROGRAMS =  $(bin_PROGRAMS) $(noinst_PROGRAMS)
+
+
+DEFS = @DEFS@ -I. -I$(srcdir) -I../..
+CPPFLAGS = @CPPFLAGS@
+LDFLAGS = @LDFLAGS@
+LIBS = @LIBS@
+X_CFLAGS = @X_CFLAGS@
+X_LIBS = @X_LIBS@
+X_EXTRA_LIBS = @X_EXTRA_LIBS@
+X_PRE_LIBS = @X_PRE_LIBS@
+snacc_OBJECTS =  parse-asn1.o lex-asn1.o define.o dependency.o \
+do-macros.o err-chk.o exports.o gen-tbls.o lib-types.o link-types.o \
+link-values.o mem.o meta.o normalize.o oid.o print.o recursive.o \
+snacc.o snacc-util.o val-parser.o tbl.o
+snacc_LDFLAGS = 
+snaccC_OBJECTS =  parse-asn1.o lex-asn1.o define.o dependency.o \
+do-macros.o err-chk.o exports.o gen-tbls.o lib-types.o link-types.o \
+link-values.o mem.o meta.o normalize.o oid.o print.o recursive.o \
+snacc.o snacc-util.o val-parser.o tbl-boot.o
+snaccC_LDFLAGS = 
+LEX_OUTPUT_ROOT = @LEX_OUTPUT_ROOT@
+LEXLIB = @LEXLIB@
+CFLAGS = @CFLAGS@
+COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+CCLD = $(CC)
+LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
+DIST_COMMON =  Makefile.am Makefile.in lex-asn1.c parse-asn1.c
+
+
+DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
+
+TAR = tar
+GZIP_ENV = --best
+SOURCES = $(snacc_SOURCES) $(snaccC_SOURCES)
+OBJECTS = $(snacc_OBJECTS) $(snaccC_OBJECTS)
+
+all: all-redirect
+.SUFFIXES:
+.SUFFIXES: .S .c .l .lo .o .s .y
+$(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
+	cd $(top_srcdir) && $(AUTOMAKE) --foreign --include-deps compiler/core/Makefile
+
+Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status
+	cd $(top_builddir) \
+	  && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= $(SHELL) ./config.status
+
+
+mostlyclean-binPROGRAMS:
+
+clean-binPROGRAMS:
+	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
+
+distclean-binPROGRAMS:
+
+maintainer-clean-binPROGRAMS:
+
+install-binPROGRAMS: $(bin_PROGRAMS)
+	@$(NORMAL_INSTALL)
+	$(mkinstalldirs) $(DESTDIR)$(bindir)
+	@list='$(bin_PROGRAMS)'; for p in $$list; do \
+	  if test -f $$p; then \
+	    echo " $(LIBTOOL)  --mode=install $(INSTALL_PROGRAM) $$p $(DESTDIR)$(bindir)/`echo $$p|sed 's/$(EXEEXT)$$//'|sed '$(transform)'|sed 's/$$/$(EXEEXT)/'`"; \
+	    $(LIBTOOL)  --mode=install $(INSTALL_PROGRAM) $$p $(DESTDIR)$(bindir)/`echo $$p|sed 's/$(EXEEXT)$$//'|sed '$(transform)'|sed 's/$$/$(EXEEXT)/'`; \
+	  else :; fi; \
+	done
+
+uninstall-binPROGRAMS:
+	@$(NORMAL_UNINSTALL)
+	list='$(bin_PROGRAMS)'; for p in $$list; do \
+	  rm -f $(DESTDIR)$(bindir)/`echo $$p|sed 's/$(EXEEXT)$$//'|sed '$(transform)'|sed 's/$$/$(EXEEXT)/'`; \
+	done
+
+mostlyclean-noinstPROGRAMS:
+
+clean-noinstPROGRAMS:
+	-test -z "$(noinst_PROGRAMS)" || rm -f $(noinst_PROGRAMS)
+
+distclean-noinstPROGRAMS:
+
+maintainer-clean-noinstPROGRAMS:
+
+.c.o:
+	$(COMPILE) -c $<
+
+.s.o:
+	$(COMPILE) -c $<
+
+.S.o:
+	$(COMPILE) -c $<
+
+mostlyclean-compile:
+	-rm -f *.o core *.core
+
+clean-compile:
+
+distclean-compile:
+	-rm -f *.tab.c
+
+maintainer-clean-compile:
+
+.c.lo:
+	$(LIBTOOL) --mode=compile $(COMPILE) -c $<
+
+.s.lo:
+	$(LIBTOOL) --mode=compile $(COMPILE) -c $<
+
+.S.lo:
+	$(LIBTOOL) --mode=compile $(COMPILE) -c $<
+
+mostlyclean-libtool:
+	-rm -f *.lo
+
+clean-libtool:
+	-rm -rf .libs _libs
+
+distclean-libtool:
+
+maintainer-clean-libtool:
+
+snacc: $(snacc_OBJECTS) $(snacc_DEPENDENCIES)
+	@rm -f snacc
+	$(LINK) $(snacc_LDFLAGS) $(snacc_OBJECTS) $(snacc_LDADD) $(LIBS)
+
+snaccC: $(snaccC_OBJECTS) $(snaccC_DEPENDENCIES)
+	@rm -f snaccC
+	$(LINK) $(snaccC_LDFLAGS) $(snaccC_OBJECTS) $(snaccC_LDADD) $(LIBS)
+.l.c:
+	$(LEX) $(AM_LFLAGS) $(LFLAGS) $< && mv $(LEX_OUTPUT_ROOT).c $@
+.y.c:
+	$(YACC) $(AM_YFLAGS) $(YFLAGS) $< && mv y.tab.c $*.c
+	if test -f y.tab.h; then \
+	if cmp -s y.tab.h $*.h; then rm -f y.tab.h; else mv y.tab.h $*.h; fi; \
+	else :; fi
+parse-asn1.h: parse-asn1.c
+
+
+tags: TAGS
+
+ID: $(HEADERS) $(SOURCES) $(LISP)
+	list='$(SOURCES) $(HEADERS)'; \
+	unique=`for i in $$list; do echo $$i; done | \
+	  awk '    { files[$$0] = 1; } \
+	       END { for (i in files) print i; }'`; \
+	here=`pwd` && cd $(srcdir) \
+	  && mkid -f$$here/ID $$unique $(LISP)
+
+TAGS:  $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) $(LISP)
+	tags=; \
+	here=`pwd`; \
+	list='$(SOURCES) $(HEADERS)'; \
+	unique=`for i in $$list; do echo $$i; done | \
+	  awk '    { files[$$0] = 1; } \
+	       END { for (i in files) print i; }'`; \
+	test -z "$(ETAGS_ARGS)$$unique$(LISP)$$tags" \
+	  || (cd $(srcdir) && etags $(ETAGS_ARGS) $$tags  $$unique $(LISP) -o $$here/TAGS)
+
+mostlyclean-tags:
+
+clean-tags:
+
+distclean-tags:
+	-rm -f TAGS ID
+
+maintainer-clean-tags:
+
+distdir = $(top_builddir)/$(PACKAGE)-$(VERSION)/$(subdir)
+
+subdir = compiler/core
+
+distdir: $(DISTFILES)
+	@for file in $(DISTFILES); do \
+	  d=$(srcdir); \
+	  if test -d $$d/$$file; then \
+	    cp -pr $$d/$$file $(distdir)/$$file; \
+	  else \
+	    test -f $(distdir)/$$file \
+	    || ln $$d/$$file $(distdir)/$$file 2> /dev/null \
+	    || cp -p $$d/$$file $(distdir)/$$file || :; \
+	  fi; \
+	done
+	$(MAKE) $(AM_MAKEFLAGS) top_distdir="$(top_distdir)" distdir="$(distdir)" dist-hook
+define.o: define.c ../../c-lib/inc/asn-incl.h \
+	../../c-lib/inc/asn-config.h ../../snacc.h ../../snaccconfig.h \
+	../../policy.h mem.h ../../c-lib/inc/exp-buf.h \
+	../../c-lib/inc/print.h ../../c-lib/inc/asn-len.h \
+	../../c-lib/inc/asn-tag.h ../../c-lib/inc/asn-bool.h \
+	../../c-lib/inc/asn-int.h ../../c-lib/inc/asn-enum.h \
+	../../c-lib/inc/asn-real.h ../../c-lib/inc/asn-octs.h \
+	../../c-lib/inc/asn-bits.h ../../c-lib/inc/asn-oid.h \
+	../../c-lib/inc/asn-null.h ../../c-lib/inc/asn-any.h \
+	../../c-lib/inc/hash.h ../../c-lib/inc/asn-list.h \
+	../../c-lib/boot/asn-useful.h define.h
+dependency.o: dependency.c ../../c-lib/inc/asn-incl.h \
+	../../c-lib/inc/asn-config.h ../../snacc.h ../../snaccconfig.h \
+	../../policy.h mem.h ../../c-lib/inc/exp-buf.h \
+	../../c-lib/inc/print.h ../../c-lib/inc/asn-len.h \
+	../../c-lib/inc/asn-tag.h ../../c-lib/inc/asn-bool.h \
+	../../c-lib/inc/asn-int.h ../../c-lib/inc/asn-enum.h \
+	../../c-lib/inc/asn-real.h ../../c-lib/inc/asn-octs.h \
+	../../c-lib/inc/asn-bits.h ../../c-lib/inc/asn-oid.h \
+	../../c-lib/inc/asn-null.h ../../c-lib/inc/asn-any.h \
+	../../c-lib/inc/hash.h ../../c-lib/inc/asn-list.h \
+	../../c-lib/boot/asn-useful.h asn1module.h snacc-util.h \
+	dependency.h
+do-macros.o: do-macros.c ../../c-lib/inc/asn-incl.h \
+	../../c-lib/inc/asn-config.h ../../snacc.h ../../snaccconfig.h \
+	../../policy.h mem.h ../../c-lib/inc/exp-buf.h \
+	../../c-lib/inc/print.h ../../c-lib/inc/asn-len.h \
+	../../c-lib/inc/asn-tag.h ../../c-lib/inc/asn-bool.h \
+	../../c-lib/inc/asn-int.h ../../c-lib/inc/asn-enum.h \
+	../../c-lib/inc/asn-real.h ../../c-lib/inc/asn-octs.h \
+	../../c-lib/inc/asn-bits.h ../../c-lib/inc/asn-oid.h \
+	../../c-lib/inc/asn-null.h ../../c-lib/inc/asn-any.h \
+	../../c-lib/inc/hash.h ../../c-lib/inc/asn-list.h \
+	../../c-lib/boot/asn-useful.h asn1module.h define.h \
+	../../compiler/back-ends/str-util.h normalize.h snacc-util.h \
+	do-macros.h
+err-chk.o: err-chk.c ../../c-lib/inc/asn-incl.h \
+	../../c-lib/inc/asn-config.h ../../snacc.h ../../snaccconfig.h \
+	../../policy.h mem.h ../../c-lib/inc/exp-buf.h \
+	../../c-lib/inc/print.h ../../c-lib/inc/asn-len.h \
+	../../c-lib/inc/asn-tag.h ../../c-lib/inc/asn-bool.h \
+	../../c-lib/inc/asn-int.h ../../c-lib/inc/asn-enum.h \
+	../../c-lib/inc/asn-real.h ../../c-lib/inc/asn-octs.h \
+	../../c-lib/inc/asn-bits.h ../../c-lib/inc/asn-oid.h \
+	../../c-lib/inc/asn-null.h ../../c-lib/inc/asn-any.h \
+	../../c-lib/inc/hash.h ../../c-lib/inc/asn-list.h \
+	../../c-lib/boot/asn-useful.h asn1module.h snacc-util.h \
+	../../compiler/back-ends/tag-util.h define.h err-chk.h
+exports.o: exports.c ../../c-lib/inc/asn-incl.h \
+	../../c-lib/inc/asn-config.h ../../snacc.h ../../snaccconfig.h \
+	../../policy.h mem.h ../../c-lib/inc/exp-buf.h \
+	../../c-lib/inc/print.h ../../c-lib/inc/asn-len.h \
+	../../c-lib/inc/asn-tag.h ../../c-lib/inc/asn-bool.h \
+	../../c-lib/inc/asn-int.h ../../c-lib/inc/asn-enum.h \
+	../../c-lib/inc/asn-real.h ../../c-lib/inc/asn-octs.h \
+	../../c-lib/inc/asn-bits.h ../../c-lib/inc/asn-oid.h \
+	../../c-lib/inc/asn-null.h ../../c-lib/inc/asn-any.h \
+	../../c-lib/inc/hash.h ../../c-lib/inc/asn-list.h \
+	../../c-lib/boot/asn-useful.h asn1module.h snacc-util.h \
+	exports.h
+gen-tbls.o: gen-tbls.c ../../c-lib/inc/asn-incl.h \
+	../../c-lib/inc/asn-config.h ../../snacc.h ../../snaccconfig.h \
+	../../policy.h mem.h ../../c-lib/inc/exp-buf.h \
+	../../c-lib/inc/print.h ../../c-lib/inc/asn-len.h \
+	../../c-lib/inc/asn-tag.h ../../c-lib/inc/asn-bool.h \
+	../../c-lib/inc/asn-int.h ../../c-lib/inc/asn-enum.h \
+	../../c-lib/inc/asn-real.h ../../c-lib/inc/asn-octs.h \
+	../../c-lib/inc/asn-bits.h ../../c-lib/inc/asn-oid.h \
+	../../c-lib/inc/asn-null.h ../../c-lib/inc/asn-any.h \
+	../../c-lib/inc/hash.h ../../c-lib/inc/asn-list.h \
+	../../c-lib/boot/asn-useful.h asn1module.h \
+	../../c-lib/boot/tbl.h gen-tbls.h
+lex-asn1.o: lex-asn1.c ../../c-lib/inc/asn-incl.h \
+	../../c-lib/inc/asn-config.h ../../snacc.h ../../snaccconfig.h \
+	../../policy.h mem.h ../../c-lib/inc/exp-buf.h \
+	../../c-lib/inc/print.h ../../c-lib/inc/asn-len.h \
+	../../c-lib/inc/asn-tag.h ../../c-lib/inc/asn-bool.h \
+	../../c-lib/inc/asn-int.h ../../c-lib/inc/asn-enum.h \
+	../../c-lib/inc/asn-real.h ../../c-lib/inc/asn-octs.h \
+	../../c-lib/inc/asn-bits.h ../../c-lib/inc/asn-oid.h \
+	../../c-lib/inc/asn-null.h ../../c-lib/inc/asn-any.h \
+	../../c-lib/inc/hash.h ../../c-lib/inc/asn-list.h \
+	../../c-lib/boot/asn-useful.h asn1module.h exports.h \
+	parse-asn1.h parser.h lex-stuff.h
+lib-types.o: lib-types.c ../../c-lib/inc/asn-incl.h \
+	../../c-lib/inc/asn-config.h ../../snacc.h ../../snaccconfig.h \
+	../../policy.h mem.h ../../c-lib/inc/exp-buf.h \
+	../../c-lib/inc/print.h ../../c-lib/inc/asn-len.h \
+	../../c-lib/inc/asn-tag.h ../../c-lib/inc/asn-bool.h \
+	../../c-lib/inc/asn-int.h ../../c-lib/inc/asn-enum.h \
+	../../c-lib/inc/asn-real.h ../../c-lib/inc/asn-octs.h \
+	../../c-lib/inc/asn-bits.h ../../c-lib/inc/asn-oid.h \
+	../../c-lib/inc/asn-null.h ../../c-lib/inc/asn-any.h \
+	../../c-lib/inc/hash.h ../../c-lib/inc/asn-list.h \
+	../../c-lib/boot/asn-useful.h asn1module.h lib-types.h
+link-types.o: link-types.c ../../c-lib/inc/asn-incl.h \
+	../../c-lib/inc/asn-config.h ../../snacc.h ../../snaccconfig.h \
+	../../policy.h mem.h ../../c-lib/inc/exp-buf.h \
+	../../c-lib/inc/print.h ../../c-lib/inc/asn-len.h \
+	../../c-lib/inc/asn-tag.h ../../c-lib/inc/asn-bool.h \
+	../../c-lib/inc/asn-int.h ../../c-lib/inc/asn-enum.h \
+	../../c-lib/inc/asn-real.h ../../c-lib/inc/asn-octs.h \
+	../../c-lib/inc/asn-bits.h ../../c-lib/inc/asn-oid.h \
+	../../c-lib/inc/asn-null.h ../../c-lib/inc/asn-any.h \
+	../../c-lib/inc/hash.h ../../c-lib/inc/asn-list.h \
+	../../c-lib/boot/asn-useful.h asn1module.h snacc-util.h \
+	link-types.h
+link-values.o: link-values.c ../../c-lib/inc/asn-incl.h \
+	../../c-lib/inc/asn-config.h ../../snacc.h ../../snaccconfig.h \
+	../../policy.h mem.h ../../c-lib/inc/exp-buf.h \
+	../../c-lib/inc/print.h ../../c-lib/inc/asn-len.h \
+	../../c-lib/inc/asn-tag.h ../../c-lib/inc/asn-bool.h \
+	../../c-lib/inc/asn-int.h ../../c-lib/inc/asn-enum.h \
+	../../c-lib/inc/asn-real.h ../../c-lib/inc/asn-octs.h \
+	../../c-lib/inc/asn-bits.h ../../c-lib/inc/asn-oid.h \
+	../../c-lib/inc/asn-null.h ../../c-lib/inc/asn-any.h \
+	../../c-lib/inc/hash.h ../../c-lib/inc/asn-list.h \
+	../../c-lib/boot/asn-useful.h asn1module.h snacc-util.h \
+	link-values.h
+mem.o: mem.c ../../snacc.h ../../snaccconfig.h ../../policy.h mem.h
+meta.o: meta.c ../../snacc.h ../../snaccconfig.h ../../policy.h meta.h
+normalize.o: normalize.c ../../c-lib/inc/asn-incl.h \
+	../../c-lib/inc/asn-config.h ../../snacc.h ../../snaccconfig.h \
+	../../policy.h mem.h ../../c-lib/inc/exp-buf.h \
+	../../c-lib/inc/print.h ../../c-lib/inc/asn-len.h \
+	../../c-lib/inc/asn-tag.h ../../c-lib/inc/asn-bool.h \
+	../../c-lib/inc/asn-int.h ../../c-lib/inc/asn-enum.h \
+	../../c-lib/inc/asn-real.h ../../c-lib/inc/asn-octs.h \
+	../../c-lib/inc/asn-bits.h ../../c-lib/inc/asn-oid.h \
+	../../c-lib/inc/asn-null.h ../../c-lib/inc/asn-any.h \
+	../../c-lib/inc/hash.h ../../c-lib/inc/asn-list.h \
+	../../c-lib/boot/asn-useful.h asn1module.h oid.h lib-types.h \
+	snacc-util.h normalize.h
+oid.o: oid.c ../../c-lib/inc/asn-incl.h ../../c-lib/inc/asn-config.h \
+	../../snacc.h ../../snaccconfig.h ../../policy.h mem.h \
+	../../c-lib/inc/exp-buf.h ../../c-lib/inc/print.h \
+	../../c-lib/inc/asn-len.h ../../c-lib/inc/asn-tag.h \
+	../../c-lib/inc/asn-bool.h ../../c-lib/inc/asn-int.h \
+	../../c-lib/inc/asn-enum.h ../../c-lib/inc/asn-real.h \
+	../../c-lib/inc/asn-octs.h ../../c-lib/inc/asn-bits.h \
+	../../c-lib/inc/asn-oid.h ../../c-lib/inc/asn-null.h \
+	../../c-lib/inc/asn-any.h ../../c-lib/inc/hash.h \
+	../../c-lib/inc/asn-list.h ../../c-lib/boot/asn-useful.h oid.h
+parse-asn1.o: parse-asn1.c ../../snacc.h ../../snaccconfig.h \
+	../../policy.h ../../c-lib/inc/asn-incl.h \
+	../../c-lib/inc/asn-config.h mem.h ../../c-lib/inc/exp-buf.h \
+	../../c-lib/inc/print.h ../../c-lib/inc/asn-len.h \
+	../../c-lib/inc/asn-tag.h ../../c-lib/inc/asn-bool.h \
+	../../c-lib/inc/asn-int.h ../../c-lib/inc/asn-enum.h \
+	../../c-lib/inc/asn-real.h ../../c-lib/inc/asn-octs.h \
+	../../c-lib/inc/asn-bits.h ../../c-lib/inc/asn-oid.h \
+	../../c-lib/inc/asn-null.h ../../c-lib/inc/asn-any.h \
+	../../c-lib/inc/hash.h ../../c-lib/inc/asn-list.h \
+	../../c-lib/boot/asn-useful.h asn1module.h lib-types.h \
+	snacc-util.h exports.h parser.h lex-stuff.h
+print.o: print.c ../../c-lib/inc/asn-incl.h ../../c-lib/inc/asn-config.h \
+	../../snacc.h ../../snaccconfig.h ../../policy.h mem.h \
+	../../c-lib/inc/exp-buf.h ../../c-lib/inc/print.h \
+	../../c-lib/inc/asn-len.h ../../c-lib/inc/asn-tag.h \
+	../../c-lib/inc/asn-bool.h ../../c-lib/inc/asn-int.h \
+	../../c-lib/inc/asn-enum.h ../../c-lib/inc/asn-real.h \
+	../../c-lib/inc/asn-octs.h ../../c-lib/inc/asn-bits.h \
+	../../c-lib/inc/asn-oid.h ../../c-lib/inc/asn-null.h \
+	../../c-lib/inc/asn-any.h ../../c-lib/inc/hash.h \
+	../../c-lib/inc/asn-list.h ../../c-lib/boot/asn-useful.h \
+	asn1module.h lib-types.h print.h
+recursive.o: recursive.c ../../c-lib/inc/asn-incl.h \
+	../../c-lib/inc/asn-config.h ../../snacc.h ../../snaccconfig.h \
+	../../policy.h mem.h ../../c-lib/inc/exp-buf.h \
+	../../c-lib/inc/print.h ../../c-lib/inc/asn-len.h \
+	../../c-lib/inc/asn-tag.h ../../c-lib/inc/asn-bool.h \
+	../../c-lib/inc/asn-int.h ../../c-lib/inc/asn-enum.h \
+	../../c-lib/inc/asn-real.h ../../c-lib/inc/asn-octs.h \
+	../../c-lib/inc/asn-bits.h ../../c-lib/inc/asn-oid.h \
+	../../c-lib/inc/asn-null.h ../../c-lib/inc/asn-any.h \
+	../../c-lib/inc/hash.h ../../c-lib/inc/asn-list.h \
+	../../c-lib/boot/asn-useful.h asn1module.h recursive.h \
+	snacc-util.h
+snacc-util.o: snacc-util.c ../../c-lib/inc/asn-incl.h \
+	../../c-lib/inc/asn-config.h ../../snacc.h ../../snaccconfig.h \
+	../../policy.h mem.h ../../c-lib/inc/exp-buf.h \
+	../../c-lib/inc/print.h ../../c-lib/inc/asn-len.h \
+	../../c-lib/inc/asn-tag.h ../../c-lib/inc/asn-bool.h \
+	../../c-lib/inc/asn-int.h ../../c-lib/inc/asn-enum.h \
+	../../c-lib/inc/asn-real.h ../../c-lib/inc/asn-octs.h \
+	../../c-lib/inc/asn-bits.h ../../c-lib/inc/asn-oid.h \
+	../../c-lib/inc/asn-null.h ../../c-lib/inc/asn-any.h \
+	../../c-lib/inc/hash.h ../../c-lib/inc/asn-list.h \
+	../../c-lib/boot/asn-useful.h asn1module.h lib-types.h define.h \
+	snacc-util.h
+snacc.o: snacc.c ../../snacc.h ../../snaccconfig.h ../../policy.h \
+	../../c-lib/inc/asn-incl.h ../../c-lib/inc/asn-config.h mem.h \
+	../../c-lib/inc/exp-buf.h ../../c-lib/inc/print.h \
+	../../c-lib/inc/asn-len.h ../../c-lib/inc/asn-tag.h \
+	../../c-lib/inc/asn-bool.h ../../c-lib/inc/asn-int.h \
+	../../c-lib/inc/asn-enum.h ../../c-lib/inc/asn-real.h \
+	../../c-lib/inc/asn-octs.h ../../c-lib/inc/asn-bits.h \
+	../../c-lib/inc/asn-oid.h ../../c-lib/inc/asn-null.h \
+	../../c-lib/inc/asn-any.h ../../c-lib/inc/hash.h \
+	../../c-lib/inc/asn-list.h ../../c-lib/boot/asn-useful.h \
+	../../version.h asn1module.h exports.h parser.h dependency.h \
+	link-types.h link-values.h err-chk.h print.h recursive.h \
+	define.h normalize.h do-macros.h snacc-util.h \
+	../../compiler/back-ends/str-util.h \
+	../../compiler/back-ends/c-gen/rules.h \
+	../../compiler/back-ends/c-gen/type-info.h \
+	../../compiler/back-ends/c-gen/gen-code.h \
+	../../compiler/back-ends/c++-gen/rules.h \
+	../../compiler/back-ends/c++-gen/types.h \
+	../../compiler/back-ends/c++-gen/gen-code.h gen-tbls.h \
+	../../compiler/back-ends/idl-gen/rules.h \
+	../../compiler/back-ends/idl-gen/types.h \
+	../../compiler/back-ends/idl-gen/gen-code.h
+tbl-boot.o: tbl-boot.c ../../c-lib/inc/asn-incl.h \
+	../../c-lib/inc/asn-config.h ../../snacc.h ../../snaccconfig.h \
+	../../policy.h mem.h ../../c-lib/inc/exp-buf.h \
+	../../c-lib/inc/print.h ../../c-lib/inc/asn-len.h \
+	../../c-lib/inc/asn-tag.h ../../c-lib/inc/asn-bool.h \
+	../../c-lib/inc/asn-int.h ../../c-lib/inc/asn-enum.h \
+	../../c-lib/inc/asn-real.h ../../c-lib/inc/asn-octs.h \
+	../../c-lib/inc/asn-bits.h ../../c-lib/inc/asn-oid.h \
+	../../c-lib/inc/asn-null.h ../../c-lib/inc/asn-any.h \
+	../../c-lib/inc/hash.h ../../c-lib/inc/asn-list.h \
+	../../c-lib/boot/asn-useful.h ../../c-lib/boot/tbl.h
+tbl.o: tbl.c ../../c-lib/inc/asn-incl.h ../../c-lib/inc/asn-config.h \
+	../../snacc.h ../../snaccconfig.h ../../policy.h mem.h \
+	../../c-lib/inc/exp-buf.h ../../c-lib/inc/print.h \
+	../../c-lib/inc/asn-len.h ../../c-lib/inc/asn-tag.h \
+	../../c-lib/inc/asn-bool.h ../../c-lib/inc/asn-int.h \
+	../../c-lib/inc/asn-enum.h ../../c-lib/inc/asn-real.h \
+	../../c-lib/inc/asn-octs.h ../../c-lib/inc/asn-bits.h \
+	../../c-lib/inc/asn-oid.h ../../c-lib/inc/asn-null.h \
+	../../c-lib/inc/asn-any.h ../../c-lib/inc/hash.h \
+	../../c-lib/inc/asn-list.h ../../c-lib/boot/asn-useful.h tbl.h
+val-parser.o: val-parser.c ../../c-lib/inc/asn-incl.h \
+	../../c-lib/inc/asn-config.h ../../snacc.h ../../snaccconfig.h \
+	../../policy.h mem.h ../../c-lib/inc/exp-buf.h \
+	../../c-lib/inc/print.h ../../c-lib/inc/asn-len.h \
+	../../c-lib/inc/asn-tag.h ../../c-lib/inc/asn-bool.h \
+	../../c-lib/inc/asn-int.h ../../c-lib/inc/asn-enum.h \
+	../../c-lib/inc/asn-real.h ../../c-lib/inc/asn-octs.h \
+	../../c-lib/inc/asn-bits.h ../../c-lib/inc/asn-oid.h \
+	../../c-lib/inc/asn-null.h ../../c-lib/inc/asn-any.h \
+	../../c-lib/inc/hash.h ../../c-lib/inc/asn-list.h \
+	../../c-lib/boot/asn-useful.h asn1module.h snacc-util.h oid.h \
+	val-parser.h
+
+info-am:
+info: info-am
+dvi-am:
+dvi: dvi-am
+check-am: all-am
+check: check-am
+installcheck-am:
+installcheck: installcheck-am
+install-exec-am: install-binPROGRAMS
+install-exec: install-exec-am
+
+install-data-am:
+install-data: install-data-am
+
+install-am: all-am
+	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
+install: install-am
+uninstall-am: uninstall-binPROGRAMS
+uninstall: uninstall-am
+all-am: Makefile $(PROGRAMS)
+all-redirect: all-am
+install-strip:
+	$(MAKE) $(AM_MAKEFLAGS) AM_INSTALL_PROGRAM_FLAGS=-s install
+installdirs:
+	$(mkinstalldirs)  $(DESTDIR)$(bindir)
+
+
+mostlyclean-generic:
+
+clean-generic:
+	-test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
+
+distclean-generic:
+	-rm -f Makefile $(CONFIG_CLEAN_FILES)
+	-rm -f config.cache config.log stamp-h stamp-h[0-9]*
+
+maintainer-clean-generic:
+	-test -z "lex-asn1lparse-asn1hparse-asn1c" || rm -f lex-asn1l parse-asn1h parse-asn1c
+mostlyclean-am:  mostlyclean-binPROGRAMS mostlyclean-noinstPROGRAMS \
+		mostlyclean-compile mostlyclean-libtool \
+		mostlyclean-tags mostlyclean-generic
+
+mostlyclean: mostlyclean-am
+
+clean-am:  clean-binPROGRAMS clean-noinstPROGRAMS clean-compile \
+		clean-libtool clean-tags clean-generic mostlyclean-am
+
+clean: clean-am
+
+distclean-am:  distclean-binPROGRAMS distclean-noinstPROGRAMS \
+		distclean-compile distclean-libtool distclean-tags \
+		distclean-generic clean-am
+	-rm -f libtool
+
+distclean: distclean-am
+
+maintainer-clean-am:  maintainer-clean-binPROGRAMS \
+		maintainer-clean-noinstPROGRAMS \
+		maintainer-clean-compile maintainer-clean-libtool \
+		maintainer-clean-tags maintainer-clean-generic \
+		distclean-am
+	@echo "This command is intended for maintainers to use;"
+	@echo "it deletes files that may require special tools to rebuild."
+
+maintainer-clean: maintainer-clean-am
+
+.PHONY: mostlyclean-binPROGRAMS distclean-binPROGRAMS clean-binPROGRAMS \
+maintainer-clean-binPROGRAMS uninstall-binPROGRAMS install-binPROGRAMS \
+mostlyclean-noinstPROGRAMS distclean-noinstPROGRAMS \
+clean-noinstPROGRAMS maintainer-clean-noinstPROGRAMS \
+mostlyclean-compile distclean-compile clean-compile \
+maintainer-clean-compile mostlyclean-libtool distclean-libtool \
+clean-libtool maintainer-clean-libtool tags mostlyclean-tags \
+distclean-tags clean-tags maintainer-clean-tags distdir info-am info \
+dvi-am dvi check check-am installcheck-am installcheck install-exec-am \
+install-exec install-data-am install-data install-am install \
+uninstall-am uninstall all-redirect all-am all installdirs \
+mostlyclean-generic distclean-generic clean-generic \
+maintainer-clean-generic clean mostlyclean distclean maintainer-clean
+
+
+# target to make tbl.h and tbl.c:
+$(SNACC_BUILT): snaccC $(USEFUL_TYPES) $(ASN1_SRC_DIR)/tbl.asn1
+	./snaccC -c -t -e -u $(USEFUL_TYPES) $(ASN1_SRC_DIR)/tbl.asn1
+
+# target to make remote things:
+$(snacc_DEPENDENCIES): force
+	cd `dirname $@` && $(MAKE) `basename $@`
+force: ;
+
+# target to capture the distribution:
+dist-hook:
+	cd $(distdir) && rm -f $(SNACC_BUILT)
+
+# Tell versions [3.59,3.63) of GNU make to not export all variables.
+# Otherwise a system limit (for SysV at least) may be exceeded.
+.NOEXPORT:

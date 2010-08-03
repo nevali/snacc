@@ -55,6 +55,8 @@
 #include "asn-type.h"
 #include "asn-int.h"
 
+using std::endl;
+
 AsnType *AsnInt::Clone() const
 {
   return new AsnInt;
@@ -171,7 +173,7 @@ void AsnInt::BDec (BUF_TYPE b, AsnLen &bytesDecoded, ENV_TYPE env)
     BDecContent (b, MAKE_TAG_ID (UNIV, PRIM, INTEGER_TAG_CODE), elmtLen, bytesDecoded, env);
 }
 
-void AsnInt::Print (ostream &os) const
+void AsnInt::Print (std::ostream &os) const
 {
     os << value;
 }

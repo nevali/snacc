@@ -101,7 +101,7 @@ public:
 
   PDU_MEMBER_MACROS
 
-  void				Print (ostream &) const;
+  void				Print (std::ostream &) const;
 
 #if META
   static const AsnBoolTypeDesc	_desc;

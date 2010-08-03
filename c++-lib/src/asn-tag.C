@@ -45,6 +45,8 @@
 #include "asn-len.h"
 #include "asn-tag.h"
 
+using std::endl;
+
 /*
  * Decode a BER Tag from the given buffer.  Error is
  * flagged if the tag is too long or if a read error occurs.

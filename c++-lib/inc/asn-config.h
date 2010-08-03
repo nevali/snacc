@@ -49,7 +49,7 @@
 #define _asn_config_h_
 
 #include <ctype.h>  /* for isprint() in <<op on AsnOcts */
-#include <iostream.h>
+#include <iostream>
 #include <memory.h>
 #include <string.h>
 #include <setjmp.h>
@@ -85,14 +85,14 @@
  * Asn1Error (char *str)
  *  - configure error handler
  */
-#define Asn1Error		cerr
+#define Asn1Error		std::cerr
 
 
 /*
  * Asn1Warning (char *str)  - configure warning mechanism
  * (currently not called)
  */
-#define Asn1Warning		cerr
+#define Asn1Warning		std::cerr
 
 
 /*

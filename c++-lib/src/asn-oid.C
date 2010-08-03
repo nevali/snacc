@@ -51,13 +51,15 @@
 
 #include "asn-config.h"
 #if TCL
-#include <strstream.h>
+#include <strstream>
 #endif
 #include "asn-len.h"
 #include "asn-tag.h"
 #include "asn-type.h"
 #include "asn-oid.h"
 #include "print.h"
+
+using std::endl;
 
 AsnOid::~AsnOid()
 {
@@ -157,7 +159,7 @@ void AsnOid::Set (unsigned long int a1, unsigned long int a2, long int a3, long 
     *(tmpBuf++) = 0x7f & headArcNum;
 
     // repeat for the rest of the arc numbers
-    for (i = 2; (i < 11) && (arcNumArr[i] > 0); i++)
+    for (int i = 2; (i < 11) && (arcNumArr[i] > 0); i++)
     {
         tmpArcNum = arcNumArr[i];
         for (elmtLen = 1; (tmpArcNum >>= 7) != 0; elmtLen++)
@@ -308,7 +310,7 @@ AsnLen AsnOid::BEncContent (BUF_TYPE b)
 
 // Prints an AsnOid in ASN.1 Value Notation.
 // Decodes the oid to get the individual arc numbers
-void AsnOid::Print (ostream &os) const
+void AsnOid::Print (std::ostream &os) const
 {
   unsigned short int firstArcNum;
   unsigned long int arcNum;

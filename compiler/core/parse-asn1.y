@@ -456,6 +456,7 @@ int parseErrCountG = 0;
 /*-----------------------------------------------------------------------*/
 
 LineNo: { $$ = myLineNoG; }
+;
 
 ModuleDefinition:
      ModuleIdentifier
@@ -1462,6 +1463,7 @@ SingleValue:
         $$->choiceId = SUBTYPEVALUE_SINGLEVALUE;
         $$->a.singleValue = $1;
     }
+;
 
 ContainedSubtype:
     INCLUDES_SYM Type

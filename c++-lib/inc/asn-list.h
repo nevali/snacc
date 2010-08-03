@@ -86,7 +86,7 @@ public:
 				  last (NULL)
 				{}
 
-  friend ostream		&operator << (ostream &os, AsnList &l);
+  friend std::ostream		&operator << (std::ostream &os, AsnList &l);
 
   void				SetCurrElmt (unsigned long int index);
   void				SetCurrToFirst()			{ curr = first; }

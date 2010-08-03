@@ -27,6 +27,8 @@
 
 #include "asn-incl.h"
 
+using std::endl;
+
 #if META
 
 AsnMemberDesc::AsnMemberDesc (const char *_name, const AsnTypeDesc *_desc):

@@ -57,12 +57,16 @@
 #include "asn-type.h"
 #include "asn-real.h"
 
+using std::endl;
+
 #ifndef IEEE_REAL_LIB
 /* ieee functions (in case not in math.h)*/
 extern "C" {
 extern int iszero (double);
+#if defined(__GNUC__) && (__GNUC__ < 3)
 extern int isinf (double);
 extern int signbit (double);
+#endif /* __GNUC__ && __GNUC__ < 3 */
 extern int ilogb (double);
 extern double scalbn (double, int);
 }
@@ -841,7 +845,7 @@ void AsnReal::BDec (BUF_TYPE b, AsnLen &bytesDecoded, ENV_TYPE env)
     BDecContent (b, MAKE_TAG_ID (UNIV, PRIM, REAL_TAG_CODE), elmtLen, bytesDecoded, env);
 }
 
-void AsnReal::Print (ostream &os) const
+void AsnReal::Print (std::ostream &os) const
 {
   os << value;
 }

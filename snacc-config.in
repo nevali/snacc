@@ -95,7 +95,7 @@ if test x$show_libs = xyes; then
     if test $exec_prefix != /usr; then echo -n "-L${exec_prefix}/lib "; fi
     case "$language" in
     C)   echo -n "-lasn1c${buffertype} " ;;
-    C++) echo -n "-Iasn1c++ " ;;
+    C++) echo -n "-lasn1c++ " ;;
     *) ;;
     esac
   else

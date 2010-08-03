@@ -72,6 +72,8 @@
 #include "asn-len.h"
 #include "asn-type.h"
 
+using std::endl;
+
 AsnType::~AsnType()
 {
 }
@@ -97,7 +99,7 @@ AsnLen AsnType::BEnc (BUF_TYPE b)
 
 #endif
 
-void AsnType::Print (ostream &os) const
+void AsnType::Print (std::ostream &os) const
 {
   os << "ERROR - Attempt to print an improperly formed ANY type (programming error)." << endl;
 }

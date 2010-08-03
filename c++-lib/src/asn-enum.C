@@ -41,9 +41,11 @@
 #include "asn-int.h"
 #include "asn-enum.h"
 
+using std::endl;
+
 AsnType *AsnEnum::Clone() const
 {
-  cerr << "AsnEnum::Clone() called" << endl;
+  std::cerr << "AsnEnum::Clone() called" << endl;
   abort();
   return NULL;
 }

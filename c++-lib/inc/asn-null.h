@@ -57,7 +57,7 @@ public:
 
   PDU_MEMBER_MACROS
 
-  void				Print (ostream &os) const;
+  void				Print (std::ostream &os) const;
 
 #if META
   static const AsnNullTypeDesc	_desc;

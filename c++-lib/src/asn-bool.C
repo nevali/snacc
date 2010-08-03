@@ -54,6 +54,8 @@
 #include "asn-type.h"
 #include "asn-bool.h"
 
+using std::endl;
+
 AsnType *AsnBool::Clone() const
 {
   return new AsnBool;
@@ -110,7 +112,7 @@ AsnLen AsnBool::BEncContent (BUF_TYPE b)
 }
 
 // print the BOOLEAN's value in ASN.1 value notation to the given ostream
-void AsnBool::Print (ostream &os) const
+void AsnBool::Print (std::ostream &os) const
 {
   os << (value ? "TRUE" : "FALSE");
 }

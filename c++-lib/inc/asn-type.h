@@ -111,7 +111,7 @@ public:
 
 #endif
 
-  virtual void			Print (ostream &) const;
+  virtual void			Print (std::ostream &) const;
 
 #if META
   static const AsnTypeDesc	_desc;

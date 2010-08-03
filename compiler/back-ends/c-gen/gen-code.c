@@ -33,6 +33,7 @@
  */
 
 #include <stdio.h>
+#include <time.h>
 
 #include "asn-incl.h"
 #include "asn1module.h"

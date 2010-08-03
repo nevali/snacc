@@ -65,6 +65,8 @@
 #include "asn-bits.h"
 #include "str-stk.h"
 
+using std::endl;
+
 extern StrStk strStkG;
 unsigned short int  strStkUnusedBitsG;
 
@@ -440,7 +442,7 @@ void AsnBits::BDecConsBits (BUF_TYPE b, AsnLen elmtLen, AsnLen &bytesDecoded, EN
 }  /* BDecConsBits */
 
 // prints the BIT STRING to the given ostream.
-void AsnBits::Print (ostream &os) const
+void AsnBits::Print (std::ostream &os) const
 {
     size_t octetLen = (bitLen+7)/8;
 

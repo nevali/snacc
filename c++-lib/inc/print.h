@@ -42,8 +42,8 @@
 extern unsigned short int	indentG;
 extern unsigned short int	stdIndentG;
 
-void				Indent (ostream &os, unsigned short int i);
+void				Indent (std::ostream &os, unsigned short int i);
 
-ostream				&operator << (ostream &os, const AsnType &a);
+std::ostream			&operator << (std::ostream &os, const AsnType &a);
 
 #endif /* conditional include */

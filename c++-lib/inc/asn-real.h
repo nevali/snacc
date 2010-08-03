@@ -67,7 +67,7 @@ public:
   AsnLen			BEnc (BUF_TYPE b);
   void				BDec (BUF_TYPE b, AsnLen &bytesDecoded, ENV_TYPE env);
 
-  void				Print (ostream &os) const;
+  void				Print (std::ostream &os) const;
 
   PDU_MEMBER_MACROS
 

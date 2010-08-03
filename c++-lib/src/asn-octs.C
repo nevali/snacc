@@ -58,6 +58,8 @@
 #include "asn-octs.h"
 #include "str-stk.h"
 
+using std::endl;
+
 extern StrStk strStkG;
 
 AsnOcts::~AsnOcts()
@@ -166,7 +168,7 @@ void AsnOcts::ReSet (const char *str)
 
 
 // Prints the AsnOcts to the given ostream in Value Notation.
-void AsnOcts::Print (ostream &os) const
+void AsnOcts::Print (std::ostream &os) const
 {
     int i;
     os << "'";

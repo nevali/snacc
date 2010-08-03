@@ -62,6 +62,8 @@
 #include "asn-tag.h"
 #include "asn-type.h"
 
+using std::endl;
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -80,7 +82,7 @@ void AsnList<T>::SetCurrElmt (unsigned long int index)
 
 // print routine for lists
 template <class T>
-ostream &operator << (ostream &os, AsnList<T> &l)
+std::ostream &operator << (std::ostream &os, AsnList<T> &l)
 {
     os << "SEQUENCE OF { ";
 
@@ -241,7 +243,7 @@ void AsnList<T>::BDecContent (BUF_TYPE b, AsnTag tagId, AsnLen elmtLen, AsnLen &
      {
          listElmtTagId = BDecTag (b, bytesDecoded, env);
 
-         if ((listElmtTagId == EOC) && (elmtLen == INDEFINITE_LEN))
+         if ((listElmtTagId == EOC_TAG_ID) && (elmtLen == INDEFINITE_LEN))
              break;
 
 

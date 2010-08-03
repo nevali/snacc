@@ -48,6 +48,8 @@
 #include "asn-type.h"
 #include "asn-null.h"
 
+using std::endl;
+
 AsnType *AsnNull::Clone() const
 {
   return new AsnNull;
@@ -85,7 +87,7 @@ void AsnNull::BDec (BUF_TYPE b, AsnLen &bytesDecoded, ENV_TYPE env)
     BDecContent (b, MAKE_TAG_ID (UNIV, PRIM, NULLTYPE_TAG_CODE), elmtLen, bytesDecoded, env);
 }
 
-void AsnNull::Print (ostream &os) const
+void AsnNull::Print (std::ostream &os) const
 {
     os << "NULL";
 }

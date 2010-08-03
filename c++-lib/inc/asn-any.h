@@ -81,7 +81,7 @@ public:
 
   PDU_MEMBER_MACROS
 
-  void				Print (ostream &) const;
+  void				Print (std::ostream &) const;
 
 #if 0
 #if TCL

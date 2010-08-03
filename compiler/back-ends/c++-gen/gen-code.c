@@ -453,7 +453,7 @@ PrintPduMemberFcns PARAMS ((src, hdr, r, cln),
         fprintf (src, "    else\n");
         fprintf (src, "        return false;\n");
 /*
-        fprintf (src, "    { cerr << \"longjmp return value is \" << val << endl;\n");
+        fprintf (src, "    { std::cerr << \"longjmp return value is \" << val << std::endl;\n");
         fprintf (src, "        return false; }\n");
 */
         fprintf (src, "}\n\n");
@@ -999,7 +999,7 @@ PrintCxxSimpleDef PARAMS ((hdr, src, if_IBM_ENC (hdrdb COMMA srcdb COMMA) if_MET
                                 fprintf (src, ")\n");
                         }
                         fprintf (src, "    {\n");
-            		fprintf (src, "        Asn1Error << \"%s::B%s: ERROR - wrong tag\" << endl;\n", td->cxxTypeDefInfo->className, r->decodeBaseName);
+            		fprintf (src, "        Asn1Error << \"%s::B%s: ERROR - wrong tag\" << std::endl;\n", td->cxxTypeDefInfo->className, r->decodeBaseName);
                         fprintf (src, "        longjmp (env, %d);\n", longJmpValG--);
                         fprintf (src, "    }\n");
 
@@ -1357,7 +1357,7 @@ PrintCxxChoiceDefCode PARAMS ((src, hdr, if_IBM_ENC (srcdb COMMA hdrdb COMMA) mo
 
     fprintf (src, "%s::%s (const %s &)\n", td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className);
     fprintf (src, "{\n");
-    fprintf (src, "  Asn1Error << \"use of incompletely defined %s::%s (const %s &)\" << endl;\n", td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className);
+    fprintf (src, "  Asn1Error << \"use of incompletely defined %s::%s (const %s &)\" << std::endl;\n", td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className);
     fprintf (src, "  abort();\n");
     fprintf (src, "}\n\n");
 
@@ -1423,7 +1423,7 @@ PrintCxxChoiceDefCode PARAMS ((src, hdr, if_IBM_ENC (srcdb COMMA hdrdb COMMA) mo
     fprintf (src, "\n");
     fprintf (src, "  return *this;\n");
     fprintf (src, "#else // SNACC_DEEP_COPY\n");
-    fprintf (src, "  Asn1Error << \"use of incompletely defined %s &%s::operator = (const %s &)\" << endl;\n", td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className);
+    fprintf (src, "  Asn1Error << \"use of incompletely defined %s &%s::operator = (const %s &)\" << std::endl;\n", td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className);
     fprintf (src, "  abort();\n");
     fprintf (src, "  // if your compiler complains here, check the -novolat option\n");
     if (novolatilefuncs)
@@ -1666,7 +1666,7 @@ PrintCxxChoiceDefCode PARAMS ((src, hdr, if_IBM_ENC (srcdb COMMA hdrdb COMMA) mo
                         }
 
                         fprintf (src, "      {\n");
-                        fprintf (src, "         Asn1Error << \"Unexpected Tag\" << endl;\n");
+                        fprintf (src, "         Asn1Error << \"Unexpected Tag\" << std::endl;\n");
                         fprintf (src, "         longjmp (env, %d);\n", longJmpValG--);
                         fprintf (src, "      }\n\n");
 
@@ -1780,7 +1780,7 @@ PrintCxxChoiceDefCode PARAMS ((src, hdr, if_IBM_ENC (srcdb COMMA hdrdb COMMA) mo
         }
 
         fprintf (src, "    default:\n");
-        fprintf (src, "      Asn1Error << \"ERROR - unexpected tag in CHOICE\" << endl;\n");
+        fprintf (src, "      Asn1Error << \"ERROR - unexpected tag in CHOICE\" << std::endl;\n");
         fprintf (src, "      longjmp (env, %d);\n", longJmpValG--);
         fprintf (src, "      break;\n");
 
@@ -1847,7 +1847,7 @@ PrintCxxChoiceDefCode PARAMS ((src, hdr, if_IBM_ENC (srcdb COMMA hdrdb COMMA) mo
             else
                 fprintf (src, "MAKE_TAG_ID (%s, %s, %d))", classStr, formStr, tag->code);
             fprintf (src, "    {\n");
-	    fprintf (src, "        Asn1Error << \"%s::B%s: ERROR - wrong tag\" << endl;\n", td->cxxTypeDefInfo->className, r->decodeBaseName);
+	    fprintf (src, "        Asn1Error << \"%s::B%s: ERROR - wrong tag\" << std::endl;\n", td->cxxTypeDefInfo->className, r->decodeBaseName);
             fprintf (src, "        longjmp (env, %d);\n", longJmpValG--);
             fprintf (src, "    }\n");
             fprintf (src, "    extraLen%d = BDecLen (b, bytesDecoded, env);\n", ++elmtLevel);
@@ -1876,11 +1876,11 @@ PrintCxxChoiceDefCode PARAMS ((src, hdr, if_IBM_ENC (srcdb COMMA hdrdb COMMA) mo
     /* ostream printing routine */
     if (printPrintersG)
     {
-        fprintf (hdr, "  void			Print (ostream &os) const;\n", td->cxxTypeDefInfo->className);
+        fprintf (hdr, "  void			Print (std::ostream &os) const;\n", td->cxxTypeDefInfo->className);
 
-        fprintf (src, "void %s::Print (ostream &os) const\n", td->cxxTypeDefInfo->className);
+        fprintf (src, "void %s::Print (std::ostream &os) const\n", td->cxxTypeDefInfo->className);
         fprintf (src, "{\n");
-        /*    fprintf (src, "  os << \"{\" << endl;\n") */
+        /*    fprintf (src, "  os << \"{\" << std::endl;\n") */
         fprintf (src, "  switch (choiceId)\n");
         fprintf (src, "  {\n");
         FOR_EACH_LIST_ELMT (e, choice->basicType->a.choice)
@@ -1909,7 +1909,7 @@ PrintCxxChoiceDefCode PARAMS ((src, hdr, if_IBM_ENC (srcdb COMMA hdrdb COMMA) mo
         }
         fprintf (src, "  } // end of switch\n");
 
-        /*    fprintf (src, "  os << \"}\" << endl;\n") */
+        /*    fprintf (src, "  os << \"}\" << std::endl;\n") */
         fprintf (src, "} // %s::Print\n\n", td->cxxTypeDefInfo->className);
     }
     /* end of Print Method code */
@@ -2260,7 +2260,7 @@ PrintCxxSeqDefCode PARAMS ((src, hdr, if_IBM_ENC (srcdb COMMA hdrdb COMMA) mods,
 
     fprintf (src, "%s::%s (const %s &)\n", td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className);
     fprintf (src, "{\n");
-    fprintf (src, "  Asn1Error << \"use of incompletely defined %s::%s (const %s &)\" << endl;\n", td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className);
+    fprintf (src, "  Asn1Error << \"use of incompletely defined %s::%s (const %s &)\" << std::endl;\n", td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className);
     fprintf (src, "  abort();\n");
     fprintf (src, "}\n\n");
 
@@ -2310,7 +2310,7 @@ PrintCxxSeqDefCode PARAMS ((src, hdr, if_IBM_ENC (srcdb COMMA hdrdb COMMA) mods,
     fprintf (src, "\n");
     fprintf (src, "  return *this;\n");
     fprintf (src, "#else // SNACC_DEEP_COPY\n");
-    fprintf (src, "  Asn1Error << \"use of incompletely defined %s &%s::operator = (const %s &)\" << endl;\n", td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className);
+    fprintf (src, "  Asn1Error << \"use of incompletely defined %s &%s::operator = (const %s &)\" << std::endl;\n", td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className);
     fprintf (src, "  abort();\n");
     fprintf (src, "  // if your compiler complains here, check the -novolat option\n");
     if (novolatilefuncs)
@@ -2460,7 +2460,7 @@ PrintCxxSeqDefCode PARAMS ((src, hdr, if_IBM_ENC (srcdb COMMA hdrdb COMMA) mods,
             fprintf (src, "    BDecEoc (b, bytesDecoded, env);\n");
             fprintf (src, "  else if (elmtLen0 != 0)\n");
             fprintf (src, "  {\n");
-            fprintf (src, "     Asn1Error << \"Expected an empty sequence\" << endl;\n");
+            fprintf (src, "     Asn1Error << \"Expected an empty sequence\" << std::endl;\n");
             fprintf (src, "     longjmp (env, %d);\n", longJmpValG--);
             fprintf (src, "  }\n");
 
@@ -2638,7 +2638,7 @@ PrintCxxSeqDefCode PARAMS ((src, hdr, if_IBM_ENC (srcdb COMMA hdrdb COMMA) mods,
                             }
 
                             fprintf (src, "    {\n");
-                            fprintf (src, "       Asn1Error << \"Unexpected Tag\" << endl;\n");
+                            fprintf (src, "       Asn1Error << \"Unexpected Tag\" << std::endl;\n");
                             fprintf (src, "       longjmp (env, %d);\n", longJmpValG--);
                             fprintf (src, "    }\n\n");
                             fprintf (src, "    elmtLen%d = BDecLen (b, seqBytesDecoded, env);\n", ++elmtLevel);
@@ -2826,7 +2826,7 @@ PrintCxxSeqDefCode PARAMS ((src, hdr, if_IBM_ENC (srcdb COMMA hdrdb COMMA) mods,
                     fprintf (src, "  }\n"); /* end of tag check if */
                     fprintf (src, "  else\n");
                     fprintf (src, "  {\n");
-                    fprintf (src, "    Asn1Error << \"ERROR - SEQUENCE is missing non-optional elmt.\" << endl;\n");
+                    fprintf (src, "    Asn1Error << \"ERROR - SEQUENCE is missing non-optional elmt.\" << std::endl;\n");
                     fprintf (src, "    longjmp (env, %d);\n", longJmpValG--);
                     fprintf (src, "  }\n\n");
                 }
@@ -2845,7 +2845,7 @@ PrintCxxSeqDefCode PARAMS ((src, hdr, if_IBM_ENC (srcdb COMMA hdrdb COMMA) mods,
             fprintf (src, "  }\n");
             fprintf (src, "  else if (seqBytesDecoded != elmtLen0)\n");
             fprintf (src, "  {\n");
-            fprintf (src, "    Asn1Error << \"ERROR - Length discrepancy on sequence.\" << endl;\n");
+            fprintf (src, "    Asn1Error << \"ERROR - Length discrepancy on sequence.\" << std::endl;\n");
             fprintf (src, "    longjmp (env, %d);\n", longJmpValG--);
             fprintf (src, "  }\n");
             fprintf (src, "  else\n");
@@ -2914,7 +2914,7 @@ PrintCxxSeqDefCode PARAMS ((src, hdr, if_IBM_ENC (srcdb COMMA hdrdb COMMA) mods,
             else
                 fprintf (src, "MAKE_TAG_ID (%s, %s, %d))\n", classStr, formStr, tag->code);
             fprintf (src, "  {\n");
-	    fprintf (src, "    Asn1Error << \"%s::B%s: ERROR - wrong tag\" << endl;\n", td->cxxTypeDefInfo->className, r->decodeBaseName);
+	    fprintf (src, "    Asn1Error << \"%s::B%s: ERROR - wrong tag\" << std::endl;\n", td->cxxTypeDefInfo->className, r->decodeBaseName);
             fprintf (src, "    longjmp (env, %d);\n", longJmpValG--);
             fprintf (src, "  }\n");
 
@@ -2939,14 +2939,14 @@ PrintCxxSeqDefCode PARAMS ((src, hdr, if_IBM_ENC (srcdb COMMA hdrdb COMMA) mods,
     /* write code for printing */
     if (printPrintersG)
     {
-        fprintf (hdr, "  void		Print (ostream &os) const;\n");
+        fprintf (hdr, "  void		Print (std::ostream &os) const;\n");
 
-        fprintf (src, "void %s::Print (ostream &os) const\n", td->cxxTypeDefInfo->className);
+        fprintf (src, "void %s::Print (std::ostream &os) const\n", td->cxxTypeDefInfo->className);
         fprintf (src, "{\n");
         allOpt = AllElmtsOptional (seq->basicType->a.sequence);
         if (allOpt)
             fprintf (src, "  int nonePrinted = true;\n");
-        fprintf (src, "  os << \"{ -- SEQUENCE --\" << endl;\n");
+        fprintf (src, "  os << \"{ -- SEQUENCE --\" << std::endl;\n");
         fprintf (src, "  indentG += stdIndentG;\n\n");
 
         FOR_EACH_LIST_ELMT (e, seq->basicType->a.sequence)
@@ -2963,12 +2963,12 @@ PrintCxxSeqDefCode PARAMS ((src, hdr, if_IBM_ENC (srcdb COMMA hdrdb COMMA) mods,
                 if (e != FIRST_LIST_ELMT (seq->basicType->a.sequence))
                 {
                     fprintf (src, "    if (!nonePrinted)\n");
-                    fprintf (src, "      os << \",\" << endl;\n");
+                    fprintf (src, "      os << \",\" << std::endl;\n");
                 }
                 fprintf (src, "    nonePrinted = false;\n", i);
             }
             else if (inTailOptElmts) /* cannot be first elmt ow allOpt is true */
-                fprintf (src, "    os << \",\"<< endl;\n");
+                fprintf (src, "    os << \",\"<< std::endl;\n");
 
             fprintf (src, "    Indent (os, indentG);\n");
 
@@ -2982,10 +2982,10 @@ PrintCxxSeqDefCode PARAMS ((src, hdr, if_IBM_ENC (srcdb COMMA hdrdb COMMA) mods,
 
 #ifdef KHO
             if (e != LAST_LIST_ELMT (seq->basicType->a.sequence)&&(!e->type->cxxTypeRefInfo->isPtr) )
-                fprintf (src, "    os << \",\" << endl;\n");
+                fprintf (src, "    os << \",\" << std::endl;\n");
 #else
             if (e != LAST_LIST_ELMT (seq->basicType->a.sequence) && !inTailOptElmts && !NextIsTailOptional (seq->basicType->a.sequence))
-                fprintf (src, "    os << \",\" << endl;\n");
+                fprintf (src, "    os << \",\" << std::endl;\n");
 #endif
 
 	    fprintf (src, "  }\n");
@@ -3000,9 +3000,9 @@ PrintCxxSeqDefCode PARAMS ((src, hdr, if_IBM_ENC (srcdb COMMA hdrdb COMMA) mods,
                   fprintf (src, "    os << \"%s \";\n", e->fieldName);
 		fprintf (src, "    os << \"-- void --\";\n");
     		if (e != LAST_LIST_ELMT (seq->basicType->a.sequence))
-                   fprintf (src, "    os << \",\" << endl;\n");
+                   fprintf (src, "    os << \",\" << std::endl;\n");
                 else
-                   fprintf (src, "    os << endl;\n");
+                   fprintf (src, "    os << std::endl;\n");
 		fprintf (src, "  }\n");
 #else
 		fprintf (src, "    os << \"-- void --\";\n");
@@ -3012,7 +3012,7 @@ PrintCxxSeqDefCode PARAMS ((src, hdr, if_IBM_ENC (srcdb COMMA hdrdb COMMA) mods,
 	    fprintf (src, "\n");
 
             if (e == LAST_LIST_ELMT (seq->basicType->a.sequence))
-                fprintf (src, "  os << endl;\n");
+                fprintf (src, "  os << std::endl;\n");
         }
 
         fprintf (src, "  indentG -= stdIndentG;\n");
@@ -3361,7 +3361,7 @@ PrintCxxSetDefCode PARAMS ((src, hdr, mods, m, r, td, parent, set, novolatilefun
 
     fprintf (src, "%s::%s (const %s &)\n", td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className);
     fprintf (src, "{\n");
-    fprintf (src, "  Asn1Error << \"use of incompletely defined %s::%s (const %s &)\" << endl;\n", td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className);
+    fprintf (src, "  Asn1Error << \"use of incompletely defined %s::%s (const %s &)\" << std::endl;\n", td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className);
     fprintf (src, "  abort();\n");
     fprintf (src, "}\n\n");
 
@@ -3411,7 +3411,7 @@ PrintCxxSetDefCode PARAMS ((src, hdr, mods, m, r, td, parent, set, novolatilefun
     fprintf (src, "\n");
     fprintf (src, "  return *this;\n");
     fprintf (src, "#else // SNACC_DEEP_COPY\n");
-    fprintf (src, "  Asn1Error << \"use of incompletely defined %s &%s::operator = (const %s &)\" << endl;\n", td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className);
+    fprintf (src, "  Asn1Error << \"use of incompletely defined %s &%s::operator = (const %s &)\" << std::endl;\n", td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className);
     fprintf (src, "  abort();\n");
     fprintf (src, "  // if your compiler complains here, check the -novolat option\n");
     if (novolatilefuncs)
@@ -3557,7 +3557,7 @@ PrintCxxSetDefCode PARAMS ((src, hdr, mods, m, r, td, parent, set, novolatilefun
             fprintf (src, "    BDecEoc (b, bytesDecoded, env);\n");
             fprintf (src, "  else if (elmtLen0 != 0)\n");
             fprintf (src, "  {\n");
-            fprintf (src, "     Asn1Error << \"Expected an empty sequence\" << endl;\n");
+            fprintf (src, "     Asn1Error << \"Expected an empty sequence\" << std::endl;\n");
             fprintf (src, "     longjmp (env, %d);\n", longJmpValG--);
             fprintf (src, "  }\n");
 
@@ -3697,7 +3697,7 @@ PrintCxxSetDefCode PARAMS ((src, hdr, mods, m, r, td, parent, set, novolatilefun
                             }
 
                             fprintf (src, "        {\n");
-                            fprintf (src, "           Asn1Error << \"Unexpected Tag\" << endl;\n");
+                            fprintf (src, "           Asn1Error << \"Unexpected Tag\" << std::endl;\n");
                             fprintf (src, "           longjmp (env, %d);\n", longJmpValG--);
                             fprintf (src, "        }\n\n");
 
@@ -3814,14 +3814,14 @@ PrintCxxSetDefCode PARAMS ((src, hdr, mods, m, r, td, parent, set, novolatilefun
                 FreeTags (tags);
             } /* for each elmt */
             fprintf (src, "       default:\n");
-            fprintf (src, "         Asn1Error << \"Unexpected Tag on SET elmt.\" << endl;\n");
+            fprintf (src, "         Asn1Error << \"Unexpected Tag on SET elmt.\" << std::endl;\n");
             fprintf (src, "         longjmp (env, %d);\n", longJmpValG--);
             fprintf (src, "    } // end switch\n");
             fprintf (src, "  } // end for loop\n");
             fprintf (src, "  bytesDecoded += setBytesDecoded;\n");
             fprintf (src, "  if (mandatoryElmtsDecoded != %d)\n", mandatoryElmtCount);
             fprintf (src, "  {\n");
-            fprintf (src, "     Asn1Error << \"ERROR - non-optional SET element missing.\" << endl;\n");
+            fprintf (src, "     Asn1Error << \"ERROR - non-optional SET element missing.\" << std::endl;\n");
             fprintf (src, "     longjmp (env, %d);\n", longJmpValG--);
             fprintf (src, "  }\n");
 
@@ -3889,7 +3889,7 @@ PrintCxxSetDefCode PARAMS ((src, hdr, mods, m, r, td, parent, set, novolatilefun
             else
                 fprintf (src, "MAKE_TAG_ID (%s, %s, %d))\n", classStr, formStr, tag->code);
             fprintf (src, "  {\n");
-	    fprintf (src, "    Asn1Error << \"%s::B%s: ERROR - wrong tag\" << endl;\n", td->cxxTypeDefInfo->className, r->decodeBaseName);
+	    fprintf (src, "    Asn1Error << \"%s::B%s: ERROR - wrong tag\" << std::endl;\n", td->cxxTypeDefInfo->className, r->decodeBaseName);
             fprintf (src, "    longjmp (env, %d);\n", longJmpValG--);
             fprintf (src, "  }\n");
 
@@ -3914,15 +3914,15 @@ PrintCxxSetDefCode PARAMS ((src, hdr, mods, m, r, td, parent, set, novolatilefun
     /* write code for printing */
     if (printPrintersG)
     {
-        fprintf (hdr, "  void			Print (ostream &os) const;\n");
+        fprintf (hdr, "  void			Print (std::ostream &os) const;\n");
 
-        fprintf (src, "void %s::Print (ostream &os) const\n", td->cxxTypeDefInfo->className);
+        fprintf (src, "void %s::Print (std::ostream &os) const\n", td->cxxTypeDefInfo->className);
         fprintf (src, "{\n");
         allOpt = AllElmtsOptional (set->basicType->a.set);
         if (allOpt)
             fprintf (src, "  int nonePrinted = true;\n");
 
-        fprintf (src, "  os << \"{ -- SET --\" << endl;\n");
+        fprintf (src, "  os << \"{ -- SET --\" << std::endl;\n");
         fprintf (src, "  indentG += stdIndentG;\n\n");
 
         FOR_EACH_LIST_ELMT (e, set->basicType->a.set)
@@ -3939,12 +3939,12 @@ PrintCxxSetDefCode PARAMS ((src, hdr, mods, m, r, td, parent, set, novolatilefun
                 if (e != FIRST_LIST_ELMT (set->basicType->a.set))
                 {
                     fprintf (src, "    if (!nonePrinted)\n");
-                    fprintf (src, "      os << \",\" << endl;\n");
+                    fprintf (src, "      os << \",\" << std::endl;\n");
                 }
                 fprintf (src, "    nonePrinted = false;\n", i);
             }
             else if (inTailOptElmts) /* cannot be first elmt ow allOpt is true */
-                fprintf (src, "    os << \",\"<< endl;\n");
+                fprintf (src, "    os << \",\"<< std::endl;\n");
 
             fprintf (src, "    Indent (os, indentG);\n");
 
@@ -3957,7 +3957,7 @@ PrintCxxSetDefCode PARAMS ((src, hdr, mods, m, r, td, parent, set, novolatilefun
                 fprintf (src, "    os << %s;\n", e->type->cxxTypeRefInfo->fieldName);
 
             if (e != LAST_LIST_ELMT (set->basicType->a.set) && !inTailOptElmts && !NextIsTailOptional (set->basicType->a.set))
-                fprintf (src, "    os << \",\" << endl;\n");
+                fprintf (src, "    os << \",\" << std::endl;\n");
 
 	    fprintf (src, "  }\n");
 
@@ -3974,7 +3974,7 @@ PrintCxxSetDefCode PARAMS ((src, hdr, mods, m, r, td, parent, set, novolatilefun
 	    fprintf (src, "\n");
 
             if (e == LAST_LIST_ELMT (set->basicType->a.set))
-                fprintf (src, "  os << endl;\n");
+                fprintf (src, "  os << std::endl;\n");
         }
         fprintf (src, "  indentG -= stdIndentG;\n");
         fprintf (src, "  Indent (os, indentG);\n");
@@ -4294,7 +4294,7 @@ PrintCxxListClass PARAMS ((src, hdr, if_IBM_ENC (srcdb COMMA hdrdb COMMA) mods, 
             else
                 fprintf (src, "MAKE_TAG_ID (%s, %s, %d))\n", classStr, formStr, tag->code);
             fprintf (src, "  {\n");
-	    fprintf (src, "    Asn1Error << \"%s::B%s: ERROR - wrong tag\" << endl;\n", td->cxxTypeDefInfo->className, r->decodeBaseName);
+	    fprintf (src, "    Asn1Error << \"%s::B%s: ERROR - wrong tag\" << std::endl;\n", td->cxxTypeDefInfo->className, r->decodeBaseName);
             fprintf (src, "    longjmp (env, %d);\n", longJmpValG--);
             fprintf (src, "  }\n");
 
@@ -4324,7 +4324,7 @@ PrintCxxListClass PARAMS ((src, hdr, if_IBM_ENC (srcdb COMMA hdrdb COMMA) mods, 
     fprintf (hdr, "  PDU_MEMBER_MACROS\n");
 
     if (printPrintersG)
-        fprintf (hdr, "  void		Print (ostream &os) const;\n");
+        fprintf (hdr, "  void		Print (std::ostream &os) const;\n");
 
     fprintf (hdr, "};\n\n\n");
 
@@ -4380,7 +4380,7 @@ PrintCxxListTagAndLenDecCode PARAMS ((src, td, t),
         }
         fprintf (src, "))\n");
         fprintf (src, "        {\n");
-        fprintf (src, "            Asn1Error << \"Unexpected Tag\" << endl;\n");
+        fprintf (src, "            Asn1Error << \"Unexpected Tag\" << std::endl;\n");
         fprintf (src, "            longjmp (env, %d);\n", longJmpValG--);
         fprintf (src, "        }\n\n");
         fprintf (src, "        elmtLen%d = BDecLen (b, listBytesDecoded, env);\n", ++elmtLevel);
@@ -4406,7 +4406,7 @@ PrintCxxListTagAndLenDecCode PARAMS ((src, td, t),
                 fprintf (src, "))\n");
 
             fprintf (src, "        {\n");
-            fprintf (src, "            Asn1Error << \"Unexpected Tag\" << endl;\n");
+            fprintf (src, "            Asn1Error << \"Unexpected Tag\" << std::endl;\n");
             fprintf (src, "            longjmp (env, %d);\n", longJmpValG--);
             fprintf (src, "        }\n\n");
             fprintf (src, "        elmtLen%d = BDecLen (b, listBytesDecoded, env);\n", ++elmtLevel);
@@ -4461,7 +4461,7 @@ PrintCxxListMethods PARAMS ((src, hdr, mods, m, r, td, parent, lst, novolatilefu
 
     fprintf (src, "%s::%s (const %s &)\n", td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className);
     fprintf (src, "{\n");
-    fprintf (src, "  Asn1Error << \"use of incompletely defined %s::%s (const %s &)\" << endl;\n", td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className);
+    fprintf (src, "  Asn1Error << \"use of incompletely defined %s::%s (const %s &)\" << std::endl;\n", td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className);
     fprintf (src, "  abort();\n");
     fprintf (src, "}\n\n");
 
@@ -4494,7 +4494,7 @@ PrintCxxListMethods PARAMS ((src, hdr, mods, m, r, td, parent, lst, novolatilefu
     fprintf (src, "\n");
     fprintf (src, "  return *this;\n");
     fprintf (src, "#else // SNACC_DEEP_COPY\n");
-    fprintf (src, "  Asn1Error << \"use of incompletely defined %s &%s::operator = (const %s &)\" << endl;\n", td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className);
+    fprintf (src, "  Asn1Error << \"use of incompletely defined %s &%s::operator = (const %s &)\" << std::endl;\n", td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className, td->cxxTypeDefInfo->className);
     fprintf (src, "  abort();\n");
     fprintf (src, "  // if your compiler complains here, check the -novolat option\n");
     if (novolatilefuncs)
@@ -4506,9 +4506,9 @@ PrintCxxListMethods PARAMS ((src, hdr, mods, m, r, td, parent, lst, novolatilefu
 
     if (printPrintersG)
     {
-        fprintf (src, "void %s::Print (ostream &os) const\n", td->cxxTypeDefInfo->className);
+        fprintf (src, "void %s::Print (std::ostream &os) const\n", td->cxxTypeDefInfo->className);
         fprintf (src, "{\n");
-        fprintf (src, "    os << \"{ -- SEQUENCE/SET OF -- \" << endl;\n");
+        fprintf (src, "    os << \"{ -- SEQUENCE/SET OF -- \" << std::endl;\n");
         fprintf (src, "    indentG += stdIndentG;\n");
 
         fprintf (src, "    //SetCurrToFirst();\n");
@@ -4521,7 +4521,7 @@ PrintCxxListMethods PARAMS ((src, hdr, mods, m, r, td, parent, lst, novolatilefu
         fprintf (src, "        //if (Curr() != Last())\n");
         fprintf (src, "        if (run != last)\n");
         fprintf (src, "            os << \",\";\n");
-        fprintf (src, "        os << endl;\n");
+        fprintf (src, "        os << std::endl;\n");
         fprintf (src, "    }\n");
 
         fprintf (src, "    indentG -= stdIndentG;\n");

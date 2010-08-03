@@ -41,6 +41,7 @@
 #include "asn-config.h"
 #include "asn-len.h"
 
+using std::endl;
 
 /*
  * Encodes the given length to the given buffer.

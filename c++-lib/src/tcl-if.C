@@ -28,11 +28,12 @@
 #include <assert.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include <strstream.h>
-#include <fstream.h>
+#include <sstream>
 #include <string.h>
 
 #include "asn-incl.h"
+
+using std::endl;
 
 #if TCL
 
@@ -835,7 +836,7 @@ int SnaccTcl::test (int argc, char **argv)
     }
 
 cout << *var;
-  strstream s;
+  stringstream s;
   s << *var;
   s.put ('\0');
   cout << strlen(s.str()) << endl;

@@ -1,6 +1,15 @@
 dnl Process this file with autoconf to produce a configure script.
 dnl ---
-dnl	$Log: configure.in,v $
+dnl	$Log: configure.ac,v $
+dnl	Revision 1.3  2002/11/19 20:28:12  debacle
+dnl	libtool changes.
+dnl	
+dnl	Revision 1.2  2002/11/19 19:37:38  debacle
+dnl	Auto-tools stuff.
+dnl	
+dnl	Revision 1.1  2002/11/19 19:18:04  debacle
+dnl	New autoconf.
+dnl	
 dnl	Revision 1.13  1997/09/04 13:54:04  wan
 dnl	A little more portability
 dnl
@@ -50,19 +59,21 @@ dnl	Revision 1.1  1994/09/01  00:51:22  rj
 dnl	first check-in (new file).
 dnl
 AC_INIT( compiler/core/snacc.c)
-AC_REVISION($Revision: 1.13 $)
+AC_REVISION($Revision: 1.3 $)
 AM_INIT_AUTOMAKE(snacc, 1.3)
 AM_CONFIG_HEADER( config.h)
 dnl --- alternative programs:
 AC_PROG_MAKE_SET
 AC_PROG_CC
 AC_ISC_POSIX
-if test -n "$GCC"; then
+dnl if CDPATH is set, the configure script might fail
+unset CDPATH
+dnl if test -n "$GCC"; then
 dnl   saveCC="$CC"
 dnl   CC="$CC -pipe"
 dnl   AC_MSG_CHECKING( whether $saveCC takes -pipe)
 dnl   AC_TRY_LINK( , , [AC_MSG_RESULT( yes)], [AC_MSG_RESULT( no); CC="$saveCC"])
-fi
+dnl fi
 AC_PROG_GCC_TRADITIONAL
 AC_MSG_CHECKING( whether ANSI or K&R style C)
 AC_TRY_COMPILE([ ], [void *p; p = "test";], [
@@ -169,9 +180,7 @@ AC_CHECK_PROGS( SPELL, ispell spell, spell)
 dnl ---
 
 dnl Configure for libtool.
-AM_PROG_LIBTOOL
-LTLIBOBJS=`echo "$LIBOBJS" | sed 's/\.o/.lo/g'`
-AC_SUBST(LTLIBOBJS)
+AC_PROG_LIBTOOL
 
 dnl Generate the C library build directories.
 linked_files=`cd c-lib/src && ls *.c`

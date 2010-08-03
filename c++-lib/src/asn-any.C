@@ -165,7 +165,7 @@ AsnAny::BDec (BUF_TYPE b, AsnLen &bytesDecoded, ENV_TYPE env)
 }
 
 
-void AsnAny::Print (ostream &os) const
+void AsnAny::Print (std::ostream &os) const
 {
   os << value;
 }

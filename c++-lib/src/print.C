@@ -45,13 +45,13 @@ unsigned short int indentG = 0;
 unsigned short int stdIndentG = 4;
 
 void
-Indent (ostream &os, unsigned short int i)
+Indent (std::ostream &os, unsigned short int i)
 {
   while (i-->0)
     os <<  ' ';
 }
 
-ostream &operator << (ostream &os, const AsnType &v)
+std::ostream &operator << (std::ostream &os, const AsnType &v)
 {
   v.Print (os);
   return os;

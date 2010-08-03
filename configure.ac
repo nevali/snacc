@@ -61,6 +61,7 @@ dnl
 AC_INIT( compiler/core/snacc.c)
 AC_REVISION($Revision: 1.3 $)
 AM_INIT_AUTOMAKE(snacc, 1.3)
+AM_MAINTAINER_MODE
 AC_CONFIG_HEADER(config.h)
 dnl --- alternative programs:
 AC_PROG_MAKE_SET

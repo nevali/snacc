@@ -310,6 +310,9 @@ AC_OUTPUT(Makefile
           tbl-tools/pval/Makefile
           tbl-tools/Makefile
           doc/Makefile
-          snacc-config,
+          snacc-config
+		  snacc-c-ebuf.pc
+		  snacc-c-ebuf-uninstalled.pc
+		  ,
 [if test -f snacc-config; then chmod +x snacc-config; fi])
 dnl --- finis

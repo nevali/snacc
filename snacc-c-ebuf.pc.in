@@ -1,0 +1,12 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: snacc-c-ebuf-@VERSION@
+Description: Sample Neufeld ASN.1 to C Compiler (C-language runtime, ExpBuf buffer)
+Version: @VERSION@
+Libs: -L${libdir} -lasn1cebuf
+Cflags: -I${includedir}/snacc/c -DUSE_EXP_BUF
+
+

@@ -11,3 +11,9 @@ cxxpkgincludedir = $(pkgincludedir)/c++
 cxxpkginclude_HEADERS = $(cpkginclude_HEADERS)
 m4datadir = $(datadir)/aclocal
 m4data_DATA = snacc.m4
+
+pkgconfigdir = $(libdir)/pkgconfig
+
+pkgconfig_DATA = snacc-c-ebuf.pc
+
+noinst_DATA = snacc-c-ebuf-uninstalled.pc

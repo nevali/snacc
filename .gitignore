@@ -7,6 +7,17 @@ Makefile
 *.la
 *.a
 *~
+LIBOBJ
+/compiler/core/snacc
+/compiler/core/snaccC
+/compiler/core/tbl.c
+/compiler/core/tbl.h
+/compiler/core/parse-asn1.c
+/compiler/core/parse-asn1.h
+/tbl-tools/berdecode/berdecode
+/tbl-tools/mkchdr/mkchdr
+/tbl-tools/ptbl/ptbl
+/tbl-tools/pval/pval
 /autom4te.cache
 /aclocal.m4
 /config.log

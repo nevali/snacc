@@ -20,7 +20,8 @@
 //
 
 #include <stdio.h>
-#include <iostream.h>
+#include <math.h>
+#include <iostream>
 #include "asn-incl.h"
 
 
@@ -43,59 +44,59 @@ int main()
 
     if (!TestAsnBuffers())
     {
-        cout << "Failed buffer tests, no point in proceeding ... bye!" << endl;
+        std::cout << "Failed buffer tests, no point in proceeding ... bye!" << std::endl;
         return 1;
     }
 
     if (!TestAsnTag())
     {
-        cout << "Failed Tag test." << endl;
+        std::cout << "Failed Tag test." << std::endl;
         isErr = true;
     }
 
     if (!TestAsnLen())
     {
-        cout << "Failed Length test." << endl;
+        std::cout << "Failed Length test." << std::endl;
         isErr = true;
     }
 
     if (!TestAsnBool())
     {
-        cout << "Failed BOOLEAN test." << endl;
+        std::cout << "Failed BOOLEAN test." << std::endl;
         isErr = true;
     }
 
 
     if (!TestAsnInt())
     {
-        cout << "Failed INTEGER test." << endl;
+        std::cout << "Failed INTEGER test." << std::endl;
         isErr = true;
     }
 
     if (!TestAsnOcts())
     {
-        cout << "Failed OCTET STRING test." << endl;
+        std::cout << "Failed OCTET STRING test." << std::endl;
         isErr = true;
     }
 
 
     if (!TestAsnBits())
     {
-        cout << "Failed BIT STRING test." << endl;
+        std::cout << "Failed BIT STRING test." << std::endl;
         isErr = true;
     }
 
 
     if (!TestAsnOid())
     {
-        cout << "Failed OBJECT IDENTIFIER test." << endl;
+        std::cout << "Failed OBJECT IDENTIFIER test." << std::endl;
         isErr = true;
     }
 
 
     if (!TestAsnReal())
     {
-        cout << "Failed REAL test." << endl;
+        std::cout << "Failed REAL test." << std::endl;
         isErr = true;
     }
 
@@ -103,13 +104,13 @@ int main()
 
     if (isErr)
     {
-        cout << "There are errors in the primitive type encoding/decoding" << endl;
-        cout << "library for this architecture.  Time for gdb..." << endl;
+        std::cout << "There are errors in the primitive type encoding/decoding" << std::endl;
+        std::cout << "library for this architecture.  Time for gdb..." << std::endl;
     }
     else
     {
-        cout << "The primitive type encoding/decoding library passed simple tests." << endl;
-        cout << "It should be safe to use..." << endl;
+        std::cout << "The primitive type encoding/decoding library passed simple tests." << std::endl;
+        std::cout << "It should be safe to use..." << std::endl;
     }
     return isErr;
 }
@@ -137,7 +138,7 @@ TestAsnBuffers()
 
     if (b.WriteError())
     {
-        cout << "Error writing to buffer." << endl;
+        std::cout << "Error writing to buffer." << std::endl;
         noErr = false;
     }
 
@@ -146,13 +147,13 @@ TestAsnBuffers()
     for (i = 255; i >= 0; i--)
         if (b.GetByte() != i)
         {
-            cout << "Error verifying data written to buffer." << endl;
+            std::cout << "Error verifying data written to buffer." << std::endl;
             noErr = false;
         }
 
     if (b.ReadError())
     {
-        cout << "Error reading from buffer." << endl;
+        std::cout << "Error reading from buffer." << std::endl;
         noErr = false;
     }
 
@@ -165,7 +166,7 @@ TestAsnBuffers()
 
     if (!b.WriteError())
     {
-        cout << "Buffers failed to report buffer write overflow." << endl;
+        std::cout << "Buffers failed to report buffer write overflow." << std::endl;
         noErr = false;
     }
 
@@ -176,7 +177,7 @@ TestAsnBuffers()
 
     if (!b.ReadError())
     {
-        cout << "Buffers failed to report buffer read overflow." << endl;
+        std::cout << "Buffers failed to report buffer read overflow." << std::endl;
         noErr = false;
     }
 
@@ -224,7 +225,7 @@ TestAsnTag()
         if (b.WriteError())
         {
             noErr = false;
-            cout << "Error encoding a Tag." << endl;
+            std::cout << "Error encoding a Tag." << std::endl;
         }
 
         b.ResetInReadMode();
@@ -240,12 +241,12 @@ TestAsnTag()
         else
         {
             noErr = false;
-            cout << "Error decoding a Tag - error number " << val << endl;
+            std::cout << "Error decoding a Tag - error number " << val << std::endl;
         }
         if (noErr && ((aTag2 != aTag1) || (len1 != len2)))
         {
             noErr = false;
-            cout << "Error decoded Tag does not match encoded Tag." << endl;
+            std::cout << "Error decoded Tag does not match encoded Tag." << std::endl;
         }
         /* set a new test tag value */
         tagClass = CNTX;
@@ -289,7 +290,7 @@ TestAsnLen()
         if (b.WriteError())
         {
             noErr = false;
-            cout <<  "Error encoding Length." << endl;
+            std::cout <<  "Error encoding Length." << std::endl;
         }
 
         b.ResetInReadMode();
@@ -305,14 +306,14 @@ TestAsnLen()
         else
         {
             noErr = false;
-            cout << "Error decoding Length - error number " << val << endl;
+            std::cout << "Error decoding Length - error number " << val << std::endl;
         }
 
 
         if (noErr && ((aLen2 != aLen1) || (len1 != len2)))
         {
             noErr = false;
-            cout << "Error - decoded length does not match encoded length" << endl;
+            std::cout << "Error - decoded length does not match encoded length" << std::endl;
         }
         aLen1 = 2;
     }
@@ -325,7 +326,7 @@ TestAsnLen()
     if (b.WriteError())
     {
         noErr = false;
-        cout << "Error encoding indefinite Length." << endl;
+        std::cout << "Error encoding indefinite Length." << std::endl;
     }
 
     b.ResetInReadMode();
@@ -341,14 +342,14 @@ TestAsnLen()
     else
     {
         noErr = false;
-        cout << "Error decoding Length - error number " << val << endl;
+        std::cout << "Error decoding Length - error number " << val << std::endl;
     }
 
 
     if (noErr && ((aLen2 != INDEFINITE_LEN) || (len1 != len2)))
     {
         noErr = false;
-        cout << "Error - decoded length does not match encoded length" << endl;
+        std::cout << "Error - decoded length does not match encoded length" << std::endl;
     }
 
     /* test EOC */
@@ -358,7 +359,7 @@ TestAsnLen()
     if (b.WriteError())
     {
         noErr = false;
-        cout << "Error encoding indefinite Length." << endl;
+        std::cout << "Error encoding indefinite Length." << std::endl;
     }
 
     b.ResetInReadMode();
@@ -374,14 +375,14 @@ TestAsnLen()
     else
     {
         noErr = false;
-        cout << "Error decoding Length - error number " <<  val << endl;
+        std::cout << "Error decoding Length - error number " <<  val << std::endl;
     }
 
 
     if (noErr && (len1 != len2))
     {
         noErr = false;
-        cout << "Error - decoded EOC length error" << endl;
+        std::cout << "Error - decoded EOC length error" << std::endl;
     }
 
     return noErr;
@@ -414,7 +415,7 @@ TestAsnBool()
     if (!aBool1.BEncPdu (b, len1))
     {
         noErr = false;
-        cout << "Error encoding TRUE BOOLEAN value." << endl;
+        std::cout << "Error encoding TRUE BOOLEAN value." << std::endl;
     }
 
     b.ResetInReadMode();
@@ -425,7 +426,7 @@ TestAsnBool()
     if (!aBool2.BDecPdu (b, len2) || !aBool2 || (len1 != len2))
     {
         noErr = false;
-        cout << "Error decoding TRUE BOOLEAN value." << endl;
+        std::cout << "Error decoding TRUE BOOLEAN value." << std::endl;
     }
 
     // now encode a false value and verify
@@ -435,7 +436,7 @@ TestAsnBool()
     if (!aBool1.BEncPdu (b, len1))
     {
         noErr = false;
-        cout << "Error encoding FALSE BOOLEAN value." << endl;
+        std::cout << "Error encoding FALSE BOOLEAN value." << std::endl;
     }
 
     b.ResetInReadMode();
@@ -446,7 +447,7 @@ TestAsnBool()
     if (!aBool2.BDecPdu (b, len2) || aBool2 || (len1 != len2))
     {
         noErr = false;
-        cout << "Error decoding FALSE BOOLEAN value." << endl;
+        std::cout << "Error decoding FALSE BOOLEAN value." << std::endl;
     }
 
     return noErr;
@@ -487,7 +488,7 @@ TestAsnInt()
             if (!a1.BEncPdu (b, len1))
             {
                 noErr = false;
-                cout << "Error encoding INTEGER value " << a1 << "." << endl;
+                std::cout << "Error encoding INTEGER value " << a1 << "." << std::endl;
             }
 
             b.ResetInReadMode();
@@ -497,7 +498,7 @@ TestAsnInt()
             if (!a2.BDecPdu (b, len2) || (a2 != a1) || (len1 != len2))
             {
                 noErr = false;
-                cout << "Error decoding INTEGER value " << a1 << "." << endl;
+                std::cout << "Error decoding INTEGER value " << a1 << "." << std::endl;
             }
         }
         sign = -1;
@@ -534,7 +535,7 @@ TestAsnOcts()
         if (!a1.BEncPdu (b, len1))
         {
             noErr = false;
-            cout << "Error encoding OCTET STRING value " << a1 << "." << endl;
+            std::cout << "Error encoding OCTET STRING value " << a1 << "." << std::endl;
         }
 
         b.ResetInReadMode();
@@ -543,7 +544,7 @@ TestAsnOcts()
         if (!a2.BDecPdu (b, len2) || (a2 != a1) || (len1 != len2))
         {
             noErr = false;
-            cout << "Error decoding OCTET STRING value " << a1 << "." << endl;
+            std::cout << "Error decoding OCTET STRING value " << a1 << "." << std::endl;
         }
         a1 = ""; // try an empty string
     }
@@ -591,7 +592,7 @@ TestAsnBits()
     if (!a1.BEncPdu (b, len1))
     {
         noErr = false;
-        cout << "Error encoding BIT STRING value " << a1 << "." << endl;
+        std::cout << "Error encoding BIT STRING value " << a1 << "." << std::endl;
     }
 
     b.ResetInReadMode();
@@ -600,7 +601,7 @@ TestAsnBits()
     if (!a2.BDecPdu (b, len2) || (a2 != a1) || (len1 != len2))
     {
         noErr = false;
-        cout << "Error decoding BIT STRING value " << a1 << "." << endl;
+        std::cout << "Error decoding BIT STRING value " << a1 << "." << std::endl;
     }
 
 
@@ -636,7 +637,7 @@ TestAsnOid()
         if (!a1.BEncPdu (b, len1))
         {
             noErr = false;
-            cout << "Error encoding OBJECT IDENTIFIER value " << a1 << "." << endl;
+            std::cout << "Error encoding OBJECT IDENTIFIER value " << a1 << "." << std::endl;
         }
 
         b.ResetInReadMode();
@@ -645,7 +646,7 @@ TestAsnOid()
         if (!a2.BDecPdu (b, len2) || (a2 != a1) || (len1 != len2))
         {
             noErr = false;
-            cout << "Error decoding OBJECT IDENTIFIER value " << a1 << "." << endl;
+            std::cout << "Error decoding OBJECT IDENTIFIER value " << a1 << "." << std::endl;
         }
 
         a1 = a3;
@@ -681,7 +682,7 @@ TestAsnList()
     if (!intList1.BEncPdu (b, len1))
     {
         noErr = false;
-        cout << "Error encoding SEQUENCE OF value " << intList1 << "." << endl;
+        std::cout << "Error encoding SEQUENCE OF value " << intList1 << "." << std::endl;
     }
 
     b.ResetInReadMode();
@@ -689,16 +690,16 @@ TestAsnList()
     if (!intList2.BDecPdu (b, len2) || (len1 != len2))
     {
         noErr = false;
-        cout << "Error decoding SEQUENCE OF value " << intList1 << "." << endl;
+        std::cout << "Error decoding SEQUENCE OF value " << intList1 << "." << std::endl;
     }
-    cout << "intlist 1 = "  <<  intList1 << endl;
-    cout << "intlist 2 = "  <<  intList1 << endl;
+    std::cout << "intlist 1 = "  <<  intList1 << std::endl;
+    std::cout << "intlist 2 = "  <<  intList1 << std::endl;
 
 
     if (!boolList1.BEncPdu (b, len1))
     {
         noErr = false;
-        cout << "Error encoding SEQUENCE OF value " << boolList1 << "." << endl;
+        std::cout << "Error encoding SEQUENCE OF value " << boolList1 << "." << std::endl;
     }
 
     b.ResetInReadMode();
@@ -706,10 +707,10 @@ TestAsnList()
     if (!boolList2.BDecPdu (b, len2) ||  (len1 != len2))
     {
         noErr = false;
-        cout << "Error decoding SEQUENCE OF value " << boolList1 << "." << endl;
+        std::cout << "Error decoding SEQUENCE OF value " << boolList1 << "." << std::endl;
     }
-    cout << "boolList 1 = "  <<  boolList1 << endl;
-    cout << "boolList 2 = "  <<  boolList1 << endl;
+    std::cout << "boolList 1 = "  <<  boolList1 << std::endl;
+    std::cout << "boolList 2 = "  <<  boolList1 << std::endl;
 
     return noErr;
 
@@ -739,17 +740,17 @@ TestAsnReal()
      * (or check/set the +/-infinity values for you architecture)
      */
 #if HAVE_ISINF
-    if (!isinf ((double)PLUS_INFINITY)) || !isinf ((double)MINUS_INFINITY))
+    if ((!isinf ((double)PLUS_INFINITY)) || (!isinf ((double)MINUS_INFINITY)))
 #else
 #if HAVE_FINITE
-    if (finite ((double)PLUS_INFINITY) || finite ((double)MINUS_INFINITY))
+    if ((finite ((double)PLUS_INFINITY)) || (finite ((double)MINUS_INFINITY)))
 #else
   #error "oops: you've got neither isinf(3) nor finite(3)?!"
 #endif
 #endif
     {
-        cout << "WARNING: PLUS_INFINITY and MINUS_INFINITY in .../c++-lib/src/asn-real.C are" << endl;
-        cout << "not correct for this architecture.  Modify the AsnPlusInfinity() routine." << endl;
+        std::cout << "WARNING: PLUS_INFINITY and MINUS_INFINITY in .../c++-lib/src/asn-real.C are" << std::endl;
+        std::cout << "not correct for this architecture.  Modify the AsnPlusInfinity() routine." << std::endl;
     }
 
 
@@ -763,7 +764,7 @@ TestAsnReal()
         if (!a[i].BEncPdu (b, len1))
         {
             noErr = false;
-            cout << "Error encoding REAL value " << a[i] << "." << endl;
+            std::cout << "Error encoding REAL value " << a[i] << "." << std::endl;
         }
 
         b.ResetInReadMode();
@@ -772,7 +773,7 @@ TestAsnReal()
         if (!a2.BDecPdu (b, len2) || (a2 != a[i]) || (len1 != len2))
         {
             noErr = false;
-            cout << "Error decoding REAL value " << a[i] << "." << endl;
+            std::cout << "Error decoding REAL value " << a[i] << "." << std::endl;
         }
     }
 

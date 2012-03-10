@@ -1,9 +1,0 @@
-debian/tmp/usr/bin/berdecode
-debian/tmp/usr/bin/mkchdr
-debian/tmp/usr/bin/ptbl
-debian/tmp/usr/bin/pval
-debian/tmp/usr/bin/snacc
-debian/tmp/usr/bin/snacc-config
-debian/tmp/usr/include/snacc/asn1
-debian/tmp/usr/share/aclocal/snacc.m4
-debian/tmp/usr/share/man/man1

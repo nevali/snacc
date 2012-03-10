@@ -28,7 +28,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <errno.h>
-#include <fstream.h>
+#include <fstream>
 
 #include "asn-incl.h"
 #include "any.h"
@@ -36,7 +36,7 @@
 
 main (int argc, char *argv[])
 {
-    ofstream outputFile;
+    std::ofstream outputFile;
     AsnBuf outputBuf;
     size_t encodedLen;
     size_t dataSize = 1024;
@@ -128,7 +128,7 @@ main (int argc, char *argv[])
     outputBuf.ResetInWriteRvsMode();
 
     if (!att.BEncPdu (outputBuf, encodedLen))
-        cout << "failed encoding AnyTestType value" << endl;
+        std::cout << "failed encoding AnyTestType value" << std::endl;
 
     outputFile.open ("att.ber");
     if (!outputFile)
@@ -142,9 +142,9 @@ main (int argc, char *argv[])
         outputFile.put (outputBuf.GetByte());
 
 
-    cout << "Wrote the following BER AnyTestType value to att.ber." << endl;
-    cout << "Test it with \"def\" and \"indef\"" << endl;
-    cout << att << endl;
+    std::cout << "Wrote the following BER AnyTestType value to att.ber." << std::endl;
+    std::cout << "Test it with \"def\" and \"indef\"" << std::endl;
+    std::cout << att << std::endl;
 
     return 0;
 }

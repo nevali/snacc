@@ -28,6 +28,8 @@ LIBOBJ
 /configure
 /config.h.in
 /config.h
+/install-sh
+/missing
 /snaccconfig.h
 /ltmain.sh
 /libtool

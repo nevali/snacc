@@ -26,7 +26,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <errno.h>
-#include <fstream.h>
+#include <fstream>
 
 #include "asn-incl.h"
 #include "any.h"
@@ -35,13 +35,13 @@ main (int argc, char *argv[])
 {
     if (argc != 2)
     {
-        cerr << "Usage: " << argv[0] << " <BER data file name>" << endl;
-        cerr << "   Decodes the given AnyTestType BER data file" << endl;
-        cerr << "   and re-encodes it to stdout" << endl;
+        std::cerr << "Usage: " << argv[0] << " <BER data file name>" << std::endl;
+        std::cerr << "   Decodes the given AnyTestType BER data file" << std::endl;
+        std::cerr << "   and re-encodes it to stdout" << std::endl;
         exit (1);
     }
 
-    ifstream dataFile;
+    std::ifstream dataFile;
     // open the data file
     dataFile.open (argv[1]);
 
@@ -52,7 +52,7 @@ main (int argc, char *argv[])
     }
 
     // get size of the data file file
-    dataFile.seekg (0, ios::end);
+    dataFile.seekg (0, std::ios::end);
     int dataSize = dataFile.tellg();
     dataFile.seekg (0);
 
@@ -80,11 +80,11 @@ main (int argc, char *argv[])
 
     if (!att.BDecPdu (inputBuf, decodedLen))
     {
-        cerr << "ERROR - Decode routines failed, exiting..." << endl;
+        std::cerr << "ERROR - Decode routines failed, exiting..." << std::endl;
         exit (1);
     }
 
-    cerr  << "decodedValue AnyTestType ::= " << att << endl << endl;
+    std::cerr  << "decodedValue AnyTestType ::= " << att << std::endl << std::endl;
 
     //
     // allocate a new buffer and set up for writing to
@@ -103,13 +103,13 @@ main (int argc, char *argv[])
     size_t encodedLen;
     if (!att.BEncPdu (outputBuf, encodedLen))
     {
-        cerr << "ERROR - Encode routines failed" << endl;
+        std::cerr << "ERROR - Encode routines failed" << std::endl;
     }
 
     // write the BER value to cout
     outputBuf.ResetInReadMode();
     for ( ; encodedLen > 0; encodedLen--)
-        cout.put (outputBuf.GetByte());
+        std::cout.put (outputBuf.GetByte());
 
     return 0;
 }

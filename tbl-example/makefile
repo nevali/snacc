@@ -6,23 +6,23 @@
 # first check-in
 #
 
-include ../makehead
+#include ../../makehead
 
-TOP		= ..
+TOP		= /usr
 
-ASN1_SRC_DIR	= $(TOP)/asn1specs
+ASN1_SRC_DIR	= $(TOP)/include/snacc/asn1
 
-ASN1_C_LIB_DIR	= $(TOP)/c-lib
-ASN1_C_INC_DIR	= $(ASN1_C_LIB_DIR)/inc
+ASN1_C_LIB_DIR	= $(TOP)/lib
+ASN1_C_INC_DIR	= $(TOP)/include/snacc/c
 TTBL_ASN1_LIB	= $(ASN1_C_LIB_DIR)/libasn1ctbl.a
 
-COMPILERDIR	= $(TOP)/compiler
+COMPILERDIR	= $(TOP)/bin
 SNACC		= $(COMPILERDIR)/snacc
 USEFUL_TYPES	= $(ASN1_SRC_DIR)/asn-useful.asn1
 SNACCFLAGS	= -u $(USEFUL_TYPES)
 
-TBLTOOLSDIR	= $(TOP)/tbl-tools
-MKHDR		= $(TBLTOOLSDIR)/mkchdr/mkchdr
+TBLTOOLSDIR	= $(TOP)/bin
+MKHDR		= $(TBLTOOLSDIR)/mkchdr
 
 ASN1FILES	= $(ASN1_SRC_DIR)/p-rec.asn1
 ASN1TTFILE	= p-rec.tt
@@ -37,11 +37,12 @@ DISTFILES = \
 	$(CFILES)	\
 	p-rec.ber
 
-CPPFLAGS	+= -I$(TOP) -I$(ASN1_C_INC_DIR) -DUSE_GEN_BUF
+CPPFLAGS	+= -g -I$(TOP) -I$(ASN1_C_INC_DIR) -DUSE_GEN_BUF
+LIBS		+= -lm
 
 #-------------------------------------------------------------------------------
 
-all::		example
+all::		depend example
 
 example:	$(OFILES) $(TTBL_ASN1_LIB)
 		$(REASON)
@@ -61,9 +62,10 @@ $(ASN1TTHFILE):	$(ASN1TTFILE)
 		$(REASON)
 		$(MKHDR) $? $@
 
-check::		example $(ASN1TTFILE)
+check::		depend example $(ASN1TTFILE)
 
 check::
+		uudecode -o p-rec.ber p-rec.ber.uu
 		./example p-rec.tt p-rec.ber
 		cmp p-rec.ber p-rec.out.ber
 		@echo "+++ the test was successful"
@@ -72,11 +74,11 @@ check::
 install::
 
 clean::
-		$(RM) example *.o *~ core .emacs* $(ASN1TTFILE) $(ASN1TTHFILE) p-rec.out.ber
+		$(RM) example *.o *~ core .emacs* $(ASN1TTFILE) $(ASN1TTHFILE) p-rec.out.ber p-rec.ber
 
 depend::
 		$(MAKE) $(MKHDR)
 
 depend::	$(ASN1TTHFILE)
 
-include ../maketail
+#include ../maketail

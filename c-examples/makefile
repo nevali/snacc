@@ -18,6 +18,9 @@ implicit_default::
 
 subdirs::	$(SUBDIRS)
 $(SUBDIRS)::
+ifeq ($(subtarget)",check)
+		echo "Doing "$@" :";
+endif
 		cd $@ && $(MAKE) $(subtarget)
 
 # the following hack is needed for older make versions (gmake doesn't need it):

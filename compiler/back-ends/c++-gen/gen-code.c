@@ -4587,7 +4587,7 @@ PrintCxxListMethods PARAMS ((src, hdr, mods, m, r, td, parent, lst, novolatilefu
     fprintf (src, "} // %s::Append\n\n\n", lcn);
 
 
-    fprintf (src, "// alloc new list elmt, put at begining of list\n");
+    fprintf (src, "// alloc new list elmt, put at beginning of list\n");
     fprintf (src, "//  and return the component type\n");
     fprintf (src, "%s  *%s::Prepend()\n", ecn, lcn);
     fprintf (src, "{\n");

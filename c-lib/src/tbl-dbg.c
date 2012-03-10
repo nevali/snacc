@@ -306,7 +306,7 @@ DBGPrintType PARAMS ((type),
     if (type->typeId == TBL_TYPEREF)
 	DBGOcts(&type->content->a.typeRef->typeDefPtr->typeName);
     else
-	fprintf(stdout,TIN[type->typeId]);
+	fprintf(stdout,"%s",TIN[type->typeId]);
     if (type->fieldName.octetLen)
     {
 	fprintf(stdout," ");

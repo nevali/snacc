@@ -86,12 +86,12 @@ Generate ``return *this'' after calling ``abort()''.
 .TP
 .B -meta
 Generate meta code that describes the generated types.
-Implies -C.
+Implies \-C.
 .TP
 .B -tcl
 .IR module.type [, module.type ]
 Generate code for a Tcl interpreter where \fImodule.type\fP are the top level PDUs.
-Implies -meta.
+Implies \-meta.
 .TP
 .BI "\-T " file\c
 This causes snacc to generate type tables and write them to the given
@@ -182,10 +182,10 @@ shorten the module name of each ASN.1 module.
 decoders can report is given an id number.  The number \c
 .I number\c
  is where the error ids start decreasing from as they are assigned to
-errors .  The default is -100 if this option is not given.  Avoid
-using a number in the range -100 to 0 since they may conflict with the
+errors .  The default is \-100 if this option is not given.  Avoid
+using a number in the range \-100 to 0 since they may conflict with the
 library routines' error ids.  If you are re-compiling the useful types
-for the library use -50.  Another use of this option is to integrate
+for the library use \-50.  Another use of this option is to integrate
 newly generated code with older code; if done correctly, the error ids
 will not conflict.
 

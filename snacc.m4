@@ -21,7 +21,7 @@ dnl $Revision: 1.1 $
 
 dnl AM_PATH_SNACC(BUFFER-TYPE [, MINIMUM-VERSION, [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND]]])
 undefine(AM_PATH_SNACC)
-AC_DEFUN(AM_PATH_SNACC,
+AC_DEFUN([AM_PATH_SNACC],
 [dnl
 AC_ARG_WITH(snacc-prefix,
 [  --with-snacc-prefix=DIR prefix where snacc is installed (optional)],

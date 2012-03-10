@@ -43,9 +43,10 @@ file containing an BER encoded PersonnelRecord value.
 Try the following:
 
 %1 genber                       # create a file called pr.ber
-%2 indef good_pr.ber > indef_pr.ber
-%3 def indef_pr.ber > def_pr.ber
-%4 diff good_pr.ber def_pr.ber  # should be no differences
+%2 uudecode -o good-pr.ber good-pr.ber.uu
+%3 indef good-pr.ber > foo.ber
+%4 def indef-pr.ber > bar.ber
+%5 diff good-pr.ber bar.ber  # should be no differences
 
 (commands 2-4 can be made via the `check' phony target.)
 

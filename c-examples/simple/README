@@ -49,9 +49,10 @@ name of a file containing an BER encoded PersonnelRecord value.
 Try the following: (or use the makefile's `check' phony target)
 
 eg% ./genber				# create a file called pr.ber
-eg% ./sbuf_indef good_pr.ber > indef_pr.ber
-eg% ./sbuf_def indef_pr.ber > def_pr.ber
-eg% diff good_pr.ber def_pr.ber		# should be no differences
+eg% uudecode -o good-pr.ber good-pr.ber.uu
+eg% ./sbuf_indef good-pr.ber > indef-pr.ber
+eg% ./sbuf_def indef-pr.ber > def-pr.ber
+eg% diff good-pr.ber def-pr.ber		# should be no differences
 
 
 The above commands decode the BER value in "good_pr.ber" and

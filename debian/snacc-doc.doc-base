@@ -1,9 +1,0 @@
-Document: snacc-doc
-Title: Snacc 1.2rj: A High Performance ASN.1 to C/C++/IDL Compiler
-Author: Michael Sample
-Abstract: This manual describes the Snacc ASN.1 to C/C++ compiler.
-Section: Programming
-
-Format: PostScript
-Files: /usr/share/doc/snacc-doc/snacc-a5.ps.gz
-

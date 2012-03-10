@@ -82,7 +82,7 @@ typedef size_t		AsnLen;
 #define BDEC_2ND_EOC_OCTET( b, bytesDecoded, env)\
 {\
     if ((b.GetByte() != 0) || b.ReadError())\
-	Asn1Warning << "Warning - second octet of EOC not zero" << endl;\
+	Asn1Warning << "Warning - second octet of EOC not zero" << std::endl;\
     (bytesDecoded)++;\
 }
 

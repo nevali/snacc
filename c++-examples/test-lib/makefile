@@ -24,19 +24,19 @@
 # first check-in. for a list of changes to the snacc-1.1 distribution please refer to the ChangeLog.
 #
 
-include ../../makehead
+#include ../../makehead
 
-TOP		= ../..
+TOP		= /usr
 
-ASN1_C++_LIB_DIR	= $(TOP)/c++-lib
-ASN1_C++_INC_DIR	= $(ASN1_C++_LIB_DIR)/inc
+ASN1_C++_LIB_DIR	= $(TOP)/lib
+ASN1_C++_INC_DIR	= $(TOP)/include/snacc/c++
 ASN1_C++_LIB		= $(ASN1_C++_LIB_DIR)/libasn1c++.a
 
 CC		= $(CXX)
-CPPFLAGS	+= -I$(TOP) -I$(ASN1_C++_INC_DIR)
+CPPFLAGS	+= -g -I$(TOP) -I$(ASN1_C++_INC_DIR)
 
 CFILES = \
-	test-lib.C
+	test-lib.cpp
 
 DISTFILES = \
 	README		\
@@ -56,4 +56,4 @@ test-lib:	$(ASN1_C++_LIB) test-lib.o
 clean::
 		$(RM) *.o *~ .emacs* test-lib core
 
-include ../../maketail
+#include ../../maketail

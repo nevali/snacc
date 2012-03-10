@@ -27,6 +27,7 @@
 #include <sys/types.h> /* this must be before stddef for gcc-2.3.1 */
 #include <stddef.h>
 #include <stdlib.h>
+#include <string.h>
 #include <errno.h>
 #include <sys/file.h>
 #include <sys/stat.h>

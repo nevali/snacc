@@ -24,7 +24,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <errno.h>
-#include <fstream.h>
+#include <fstream>
 #include "asn-incl.h"
 #include "p-rec.h"
 
@@ -36,14 +36,14 @@ main (int argc, char *argv[])
     size_t encodedLen;
     size_t decodedLen;
     size_t      dataSize;
-    ifstream dataFile;
+    std::ifstream dataFile;
     PersonnelRecord pr;
 
     if (argc != 2)
     {
-        cerr << "Usage: " << argv[0] << " <BER data file name>" << endl;
-        cerr << "   Decodes the given PersonnelRecord BER data file" << endl;
-        cerr << "   and re-encodes it to stdout" << endl;
+        std::cerr << "Usage: " << argv[0] << " <BER data file name>" << std::endl;
+        std::cerr << "   Decodes the given PersonnelRecord BER data file" << std::endl;
+        std::cerr << "   and re-encodes it to stdout" << std::endl;
         exit (1);
     }
 
@@ -58,7 +58,7 @@ main (int argc, char *argv[])
     }
 
     // get size of the data file file
-    dataFile.seekg (0, ios::end);
+    dataFile.seekg (0, std::ios::end);
     dataSize = dataFile.tellg();
     dataFile.seekg (0);
 
@@ -82,11 +82,11 @@ main (int argc, char *argv[])
 
     if (!pr.BDecPdu (inputBuf, decodedLen))
     {
-        cerr << "--- ERROR - Decode routines failed, exiting..." << endl;
+        std::cerr << "--- ERROR - Decode routines failed, exiting..." << std::endl;
         exit (1);
     }
 
-    cerr  << "decodedValue PersonnelRecord ::= " << pr << endl << endl;
+    std::cerr  << "decodedValue PersonnelRecord ::= " << pr << std::endl << std::endl;
 
     //
     // allocate a new buffer set up for writing to
@@ -103,13 +103,13 @@ main (int argc, char *argv[])
 
     if (!pr.BEncPdu (outputBuf, encodedLen))
     {
-        cerr << "--- ERROR - Encode routines failed" << endl;
+        std::cerr << "--- ERROR - Encode routines failed" << std::endl;
     }
 
     // write the BER value to cout
     outputBuf.ResetInReadMode();
     for (; encodedLen > 0; encodedLen--)
-        cout.put (outputBuf.GetByte());
+        std::cout.put (outputBuf.GetByte());
 
     return 0;
 }

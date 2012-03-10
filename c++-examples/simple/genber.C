@@ -21,7 +21,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <errno.h>
-#include <fstream.h>
+#include <fstream>
 
 #include "asn-incl.h"
 #include "p-rec.h"
@@ -29,7 +29,7 @@
 
 main (int argc, char *argv[])
 {
-    ofstream outputFile;
+    std::ofstream outputFile;
     AsnBuf outputBuf;
     size_t encodedLen;
     const size_t dataSize = 1024;
@@ -75,7 +75,7 @@ main (int argc, char *argv[])
 
     // encode the internal value we just build into the buffer
     if (!pr.BEncPdu (outputBuf, encodedLen))
-        cout << "failed encoding AnyTestType value" << endl;
+        std::cout << "failed encoding AnyTestType value" << std::endl;
 
     // open file to hold the BER value
     outputFile.open ("pr.ber");
@@ -91,9 +91,9 @@ main (int argc, char *argv[])
         outputFile.put (outputBuf.GetByte());
 
 
-    cout << "Wrote the following BER PersonnelRecord value to pr.ber." << endl;
-    cout << "Test it with \"def\" and \"indef\"." << endl;
-    cout << pr << endl;
+    std::cout << "Wrote the following BER PersonnelRecord value to pr.ber." << std::endl;
+    std::cout << "Test it with \"def\" and \"indef\"." << std::endl;
+    std::cout << pr << std::endl;
 
     return 0;
 }

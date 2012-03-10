@@ -1,3 +1,10 @@
+Sat 10 Mar 16:04:59 2012  Mo McRoberts <mo@nevali.net>
+
+	Merge patches from Debian and Ubuntu, thanks to Balint Reczey.
+	<https://github.com/nexgenta/snacc/commit/434c542c51749496cc7877f165af56b11f9cecdb>
+
+	Packaging clean-ups.
+
 Fri Oct 10 13:43:18 1997  Sebastian Wangnick  <sebastian.wangnick@eurocontrol.be>
 
 	* tcl-asn/makefile, tcl-asn/asnwish.c, tcl-asn/beredit, compiler/core/val-parser.c, tcl-asn/README, c-lib/src/tbl-gen.c, compiler/core/define.c, c++-examples/simple/good-pr.ber, c-examples/simple/good-pr.ber, version.h, README:

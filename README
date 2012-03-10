@@ -1,4 +1,9 @@
-This new release, 1.3, consists of some improvements and bug fixes:
+This new release, 1.3.1, consists of some improvements and bug fixes:
+
+New in 1.3.1:
+ * Fix the passing of a variable string as a printf-format.
+ * Fixes to examples so that they'll compile.
+ * Various packaging clean-ups.
 
 New in 1.3:
  * Corrected bug in generic table decoder wrt. indefinite length elements

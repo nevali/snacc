@@ -448,10 +448,14 @@ int main PARAMS ((argc, argv),
                         usefulTypeModFileName = &argv[currArg][2];
                         currArg++;
                     }
-                    else
+                    else if (currArg+1 < argc)
                     {
                         usefulTypeModFileName = argv[currArg+1];
                         currArg += 2;
+                    }
+                    else /* no file to parse after -u */
+                    {
+                        goto error;
                     }
                 break;
 
@@ -461,11 +465,16 @@ int main PARAMS ((argc, argv),
                         longJmpVal = atoi (&argv[currArg][2]);
                         currArg++;
                     }
-                    else
+                    else if (currArg+1 < argc)
                     {
                         longJmpVal = atoi (argv[currArg+1]);
                         currArg += 2;
                     }
+                    else /* no number to parse after -l */
+                    {
+                        goto error;
+		    }
+
                 break;
 
                 case 'T':
@@ -476,11 +485,15 @@ int main PARAMS ((argc, argv),
                         tblFileName = &argv[currArg][2];
                         currArg++;
                     }
-                    else
+                    else if (currArg+1 < argc)
                     {
                         tblFileName = argv[currArg+1];
                         currArg += 2;
                     }
+                    else /* no file to parse after -T */
+                    {
+                        goto error;
+		    }
                 break;
 
 
@@ -492,10 +505,14 @@ int main PARAMS ((argc, argv),
                             maxFileNameLenG = atoi (&argv[currArg][3]);
                             currArg++;
                         }
-                        else
+                        else if (currArg+1 < argc)
                         {
                             maxFileNameLenG = atoi (argv[currArg+1]);
                             currArg += 2;
+                        }
+                        else /* no parameter to parse after -mf */
+                        {
+			  goto error;
                         }
                         break;
                     }
@@ -535,7 +552,7 @@ int main PARAMS ((argc, argv),
 
 error:
                 default:
-                    fprintf (stderr, "%s: ERROR---unknown cmd line option `%s'\n\n", argv[0], argv[currArg]);
+                    fprintf (stderr, "%s: ERROR---unknown or improperly used cmd line option `%s'\n\n", argv[0], argv[currArg]);
                     Usage (argv[0], stderr);
                     exit (1);
             }

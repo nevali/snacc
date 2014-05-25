@@ -14,7 +14,7 @@ libasn1cxxtcl_la_SOURCES = asn-any.C asn-bits.C asn-bool.C asn-enum.C \
 	tcl-if.C str-stk.C tkAppInit.c $(BUILT_SOURCES)
 cxxpkgincludedir = $(pkgincludedir)/c++
 cxxpkginclude_HEADERS = asn-useful.h
-INCLUDES = -I$(top_srcdir)/c++-lib/inc $(BUFFLAGS)
+AM_CPPFLAGS = -I$(top_srcdir)/c++-lib/inc $(BUFFLAGS)
 
 ASN1_SRC_DIR = $(top_srcdir)/asn1specs
 COMPILERDIR = $(top_srcdir)/compiler/core

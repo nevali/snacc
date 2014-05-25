@@ -13,6 +13,7 @@ LIBOBJ
 /compiler/core/snaccC
 /compiler/core/tbl.c
 /compiler/core/tbl.h
+/compiler/core/lex-asn1.c
 /compiler/core/parse-asn1.c
 /compiler/core/parse-asn1.h
 /tbl-tools/berdecode/berdecode

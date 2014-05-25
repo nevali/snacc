@@ -28,6 +28,8 @@
  *
  */
 
+#include <string.h>
+
 #include "asn-config.h"
 #include "asn-len.h"
 #include "asn-tag.h"

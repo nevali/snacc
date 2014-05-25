@@ -92,6 +92,8 @@
  *
  */
 
+#include <string.h>
+
 #include "asn-config.h"
 #include "gen-buf.h"
 #include "exp-buf.h"

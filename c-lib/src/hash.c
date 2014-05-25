@@ -47,6 +47,8 @@
  *
  */
 
+#include <string.h>
+
 #include "asn-config.h"
 #include "hash.h"
 

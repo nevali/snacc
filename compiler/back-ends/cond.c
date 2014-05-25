@@ -17,6 +17,8 @@
  *
  */
 
+#include <string.h>
+
 #include "asn-incl.h"
 #include "cond.h"
 

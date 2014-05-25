@@ -365,7 +365,7 @@ MakeBaseFileName PARAMS ((refName),
 {
   if (keepbaseG)
   {
-    char	*base, *dot;
+    const char	*base, *dot;
     int		stublen;
     char	*stub;
 

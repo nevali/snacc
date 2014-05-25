@@ -663,6 +663,8 @@ GetAllNamedElmts PARAMS ((t),
                 Free (ntElmtList); /* zap now unused list head */
             }
             break;
+        default:
+            break;
     }
     return retVal;
 }  /* GetAllNamedElmts */

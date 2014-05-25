@@ -153,6 +153,8 @@ PrintCCode PARAMS ((src, hdr, mods, m, r, longJmpVal, printTypes, printValues, p
             case BASICTYPE_ANY:
                 fprintf (hdr, "\n\n\n");
                 break;
+            default:
+                break;
         }
 
     }

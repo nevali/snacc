@@ -185,9 +185,9 @@ MkRecType  PARAMS ((m, td, t, optional, empty),
             }
             break;
 
-        /*
-         * default: other types are not aggregate and
-         * do not make recursive refs - they can be ignored
-         */
+        default:
+            /* other types are not aggregate and
+             * do not make recursive refs - they can be ignored */
+            break;
     }
 } /* MkRecType */

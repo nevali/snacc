@@ -24,6 +24,8 @@
  *
  */
 
+#ifndef TBL_INCL_H
+#define TBL_INCL_H
 #define TTBL	3
 
 #include "asn-incl.h"
@@ -50,3 +52,5 @@ typedef struct AChoiceVal
  * TblError (char *str) - configure error handler
  */
 #define TblError( str)		fprintf (stderr, "%s", str)
+
+#endif /* TBL_INCL_H */

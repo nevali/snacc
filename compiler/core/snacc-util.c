@@ -28,6 +28,7 @@
  */
 
 #include <stdio.h>
+#include <string.h>
 
 #include "asn-incl.h"
 #include "mem.h"
@@ -661,6 +662,8 @@ GetAllNamedElmts PARAMS ((t),
                 retVal = AsnListConcat (retVal, ntElmtList);
                 Free (ntElmtList); /* zap now unused list head */
             }
+            break;
+        default:
             break;
     }
     return retVal;

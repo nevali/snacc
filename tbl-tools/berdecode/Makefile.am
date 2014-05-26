@@ -3,5 +3,5 @@
 AUTOMAKE_OPTIONS = 1.3 foreign
 
 bin_PROGRAMS = berdecode
-INCLUDES = -I$(top_srcdir)/c-lib/inc -I$(top_srcdir)/c-lib/tbl
+AM_CPPFLAGS = -I$(top_srcdir)/c-lib/inc -I$(top_srcdir)/c-lib/tbl
 berdecode_LDADD = ../../c-lib/tbl/libasn1ctbl.la

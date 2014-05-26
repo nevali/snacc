@@ -16,6 +16,8 @@
 
 #ifdef USE_GEN_BUF
 
+#include <string.h>
+
 #include "asn-config.h"
 #include "gen-buf.h"
 #include "sbuf.h"

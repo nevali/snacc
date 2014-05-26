@@ -45,6 +45,7 @@
 
 #include "asn-incl.h"
 #include "mem.h"
+#include "string.h"
 #include "asn1module.h"
 #include "define.h"
 #include "str-util.h"

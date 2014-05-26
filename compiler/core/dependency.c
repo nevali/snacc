@@ -505,10 +505,9 @@ BuildLocalRefList PARAMS ((t, refList),
             *tdHndl = t->basicType->a.localTypeRef->link;
             break;
 
-        /*
-         * default: other types are not aggregate and
-         * and can be ignored
-         */
+       default:
+            break;
+         /* other types are not aggregate and can be ignored */
     }
 } /* BuildLocalRefList */
 

@@ -4,5 +4,5 @@ AUTOMAKE_OPTIONS = 1.3 foreign
 
 bin_PROGRAMS = mkchdr
 mkchdr_SOURCES = mkchdr.c tbl-gen-c-hdr.c
-INCLUDES = -I$(top_srcdir)/c-lib/inc -DUSE_SBUF -I$(top_srcdir)/c-lib/tbl
+AM_CPPFLAGS = -I$(top_srcdir)/c-lib/inc -DUSE_SBUF -I$(top_srcdir)/c-lib/tbl
 mkchdr_LDADD = ../../c-lib/tbl/libasn1ctbl.la

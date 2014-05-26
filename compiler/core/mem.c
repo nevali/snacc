@@ -36,6 +36,7 @@
 
 #if STDC_HEADERS
 #include <stdlib.h>
+#include <string.h>
 #else
 #if HAVE_STRING_H
 #include <string.h>

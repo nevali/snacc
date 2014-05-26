@@ -38,6 +38,7 @@ WHITESPC  [ \t\n\r]
 
 
 %{
+#include <string.h>
 
 #include "asn-incl.h"
 #include "mem.h"

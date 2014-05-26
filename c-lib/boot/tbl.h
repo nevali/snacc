@@ -35,7 +35,11 @@ typedef enum
         TBL_TYPEREF = 13
     } TBLTypeId; /* ENUMERATED { TBL_BOOLEAN (0), TBL_INTEGER (1), TBL_BITSTRING (2), TBL_OCTETSTRING (3), TBL_NULL (4), TBL_OID (5), TBL_REAL (6), TBL_ENUMERATED (7), TBL_SEQUENCE (8), TBL_SET (9), TBL_SEQUENCEOF (10), TBL_SETOF (11), TBL_CHOICE (12), TBL_TYPEREF (13) }  */
 
-#define BEncTBLTypeIdContent BEncAsnEnumContent
+static inline AsnLen
+BEncTBLTypeIdContent PROTO ((BUF_TYPE b, TBLTypeId *data)) {
+  AsnEnum tmp_data = *data;
+  return BEncAsnEnumContent(b, &tmp_data);
+}
 
 #define BDecTBLTypeIdContent BDecAsnEnumContent
 
@@ -67,7 +71,11 @@ typedef enum
         PRIVATE = 3
     } TBLTagClass; /* ENUMERATED { UNIVERSAL (0), APPLICATION (1), CONTEXT (2), PRIVATE (3) }  */
 
-#define BEncTBLTagClassContent BEncAsnEnumContent
+static inline AsnLen
+BEncTBLTagClassContent PROTO ((BUF_TYPE b, TBLTagClass *data)) {
+  AsnEnum tmp_data = *data;
+  return BEncAsnEnumContent(b, &tmp_data);
+}
 
 #define BDecTBLTagClassContent BDecAsnEnumContent
 

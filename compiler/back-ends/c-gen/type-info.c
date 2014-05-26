@@ -25,6 +25,7 @@
 
 #include <ctype.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "asn-incl.h"
 #include "asn1module.h"

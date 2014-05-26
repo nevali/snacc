@@ -15,7 +15,7 @@ libasn1cbuf_la_SOURCES = asn-any.c asn-len.c asn-real.c print.c tbl-enc.c \
 	asn-int.c asn-oid.c sbuf.c nibble-alloc.c tbl-dec.c tbl-util.c $(BUILT_SOURCES)
 cpkgincludedir = $(pkgincludedir)/c
 cpkginclude_HEADERS = asn-useful.h tbl.h
-INCLUDES = -I$(top_srcdir)/c-lib/inc $(BUFFLAGS)
+AM_CPPFLAGS = -I$(top_srcdir)/c-lib/inc $(BUFFLAGS)
 
 COMPILERDIR = $(top_srcdir)/compiler
 SNACC = $(COMPILERDIR)/core/snacc

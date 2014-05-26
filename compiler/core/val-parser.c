@@ -39,6 +39,7 @@
 
 #include <ctype.h> /* for isalpha, isdigit etc macros */
 #include <stdio.h>
+#include <string.h>
 
 #include "asn-incl.h"
 #include "asn1module.h"
